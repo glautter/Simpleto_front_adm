@@ -1,0 +1,9 @@
+
+<div style="padding:18px;">
+  <h2>Condomínios</h2>
+  <button (click)="add()">Adicionar</button>
+
+  <ul>
+    <li *ngFor="let c of items">{{c.nome}} - {{c.cnpj || '---'}}</li>
+  </ul>
+</div>

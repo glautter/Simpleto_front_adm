@@ -1,0 +1,29 @@
+
+<div style="padding:18px;">
+  <h2>Painel Administrativo</h2>
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
+    <app-dashboard-card title="Condomínios" [value]="kpis.condominios"></app-dashboard-card>
+    <app-dashboard-card title="Moradores" [value]="kpis.moradores"></app-dashboard-card>
+    <app-dashboard-card title="Ocorrências Abertas" [value]="kpis.ocorrenciasAbertas"></app-dashboard-card>
+    <app-dashboard-card title="Comunicados" [value]="kpis.comunicados"></app-dashboard-card>
+    <app-dashboard-card title="Manutenções" [value]="kpis.manutencoes"></app-dashboard-card>
+    <app-dashboard-card title="Mensagens" [value]="kpis.mensagens"></app-dashboard-card>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px;">
+    <section>
+      <h3>Ocorrências por tipo</h3>
+      <ul>
+        <li *ngFor="let o of ocorrencias">{{o.name}}: {{o.value}}</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Ocupação por torre (%)</h3>
+      <ul>
+        <li *ngFor="let t of ocupacao">{{t.torre}}: {{t.ocupacao}}%</li>
+      </ul>
+    </section>
+  </div>
+</div>
