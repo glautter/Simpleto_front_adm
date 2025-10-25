@@ -1,0 +1,257 @@
+// Reset e variáveis
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$azul: #01586d;
+//#4ba7b0;
+$amarelo: #ffdd57;
+$cinzaClaro: #f4f4f4;
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $azul;
+  color: white;
+  padding: 1rem 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    width: 150px;
+    height: 50px;
+    background-image: url('../assets/imgs/logo_vv.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .menu {
+    display: flex;
+    gap: 2rem;
+
+    a {
+      font-weight: 500;
+      color: white;
+
+      &:hover {
+        color: $amarelo;
+      }
+    }
+  }
+}
+
+// Hero
+.hero {
+  height: 100vh;
+  background: url('../assets/imgs/condominioImagem.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  padding-top: 80px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 2rem;
+
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      // ajuste para quebra controlada
+      .mobile‑linebreak {
+        display: none;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      background-color: $amarelo;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: background-color($amarelo, 10%);
+      }
+    }
+  }
+}
+
+// Responsividade para a quebra de linha no título
+@media (max-width: 768px) {
+  .hero {
+    .hero-content {
+      h2 {
+        font-size: 2.2rem;
+        .mobile‑linebreak {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// Features section
+.features {
+  background-color: $cinzaClaro;
+  padding: 5rem 0;
+  text-align: center;
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+
+    .card-button {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+      width: 280px;
+
+      h4 {
+        margin-bottom: 1rem;
+        color: $azul;
+      }
+
+      p {
+        font-size: 0.95rem;
+        color: #555;
+      }
+
+      &:hover {
+        background: #e8f797;
+        transform: translateY(-4px);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+}
+
+// Benefits
+.benefits {
+  padding: 4rem 0;
+  background-color: white;
+  text-align: center;
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .benefit-list {
+    list-style: none;
+    font-size: 1rem;
+    color: #444;
+    max-width: 600px;
+    margin: 0 auto;
+
+    li {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      position: relative;
+
+      &::before {
+        content: '✔';
+        color: $azul;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+}
+
+// CTA
+.cta {
+  background-color: $azul;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+
+  h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-primary {
+    background-color: $amarelo;
+    color: #000;
+    padding: 0.8rem 1.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: background-color($amarelo, 10%);
+    }
+  }
+}
+
+// Footer
+.footer {
+  background-color: background-color($azul, 10%);
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
