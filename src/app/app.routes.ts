@@ -9,7 +9,7 @@ import { AdministracaoHomeComponent } from './pages/administracao-home/administr
 import { HomeComponent } from './pages/home/home';
 
 export const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'administracao-home', component: AdministracaoHomeComponent },
   { path: 'dashboard', component: DashboardComponent },
