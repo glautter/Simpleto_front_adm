@@ -1,5 +1,4 @@
-import { Component, signal, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,7 +13,6 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   selector: 'administracao-home',
   standalone: true,
   imports: [
-    RouterOutlet,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
