@@ -36,6 +36,7 @@ export class AdministracaoHomeComponent {
 
   ngAfterViewInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+    setTimeout(() => {
       if (res.matches) {
         this.isMobile = true;
         this.sidenav.mode = 'over';
@@ -48,6 +49,7 @@ export class AdministracaoHomeComponent {
         this.isSidenavOpen = true;
       }
     });
+  });
   }
 
   toggleSidenav() {
