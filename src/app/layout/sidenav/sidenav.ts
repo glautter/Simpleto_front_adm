@@ -25,7 +25,7 @@ interface MenuItem {
   standalone: true,
   imports: [CommonModule, MatListModule, MatIconModule, RouterLink, MatTooltipModule],
   templateUrl: './sidenav.html',
-  styleUrls: ['./sidenav.css']
+  styleUrls: ['./sidenav.scss']
 })
 export class SidenavComponent {
   @Input() collapsed = false;

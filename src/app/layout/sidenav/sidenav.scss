@@ -1,0 +1,199 @@
+/* gov.br like sidenav adjustments */
+.gb-sidenav {
+  width: 250px;
+  background: var(--govbr-primary, #06327a);
+  color: #fff;
+  height: 100%;
+  overflow-y: auto;
+  padding-top: 8px;
+  margin: 0;
+
+  &.collapsed {
+    width: 64px;
+
+    .gb-sidenav__button,
+    .gb-sidenav__submenu-link {
+      justify-content: center;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .gb-sidenav__list {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+
+    .gb-sidenav__item {
+      display: block;
+
+      + .gb-sidenav__item {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      &.active {
+        > .gb-sidenav__button {
+          background: rgba(0, 0, 0, 0.12);
+
+          .gb-sidenav__title,
+          .gb-sidenav__icon {
+            color: #fff;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .gb-sidenav__button,
+      .gb-sidenav__submenu-link {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+        border: none;
+        background: transparent;
+        text-align: left;
+        padding: 14px 20px;
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 180ms ease;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      .gb-sidenav__icon {
+        width: 28px;
+        height: 28px;
+        font-size: 22px;
+      }
+
+      .gb-sidenav__title {
+        white-space: nowrap;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        max-width: 160px;
+        vertical-align: middle;
+
+        &.hidden {
+          display: none;
+        }
+      }
+
+      .gb-sidenav__chev {
+        margin-left: auto;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .gb-sidenav__submenu {
+        padding-left: 8px;
+        background-color: rgba(255, 255, 255, 0.05);
+
+        li {
+          .gb-sidenav__submenu-link {
+            padding-left: 36px;
+            background-color: rgba(255, 255, 255, 0.025);
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.075);
+            }
+
+            &.active {
+              background: rgba(87, 97, 250, 0.06);
+
+              .gb-sidenav__title {
+                color: #fff;
+              }
+            }
+          }
+
+          .gb-sidenav__subsubmenu {
+            padding-left: 16px;
+            background-color: rgba(255, 255, 255, 0.02);
+
+            li > .gb-sidenav__submenu-link {
+              background-color: rgba(255, 255, 255, 0.0);
+
+              &:hover {
+                background: rgba(255, 255, 255, 0.05);
+              }
+            }
+
+            li {
+              list-style: none !important;
+              list-style-type: none !important;
+
+              &::before,
+              &::marker {
+                display: none !important;
+                content: none !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+}
+
+/* Material list adjustments */
+.mat-list-base .mat-list-item {
+  border-bottom: none;
+}
+
+/* Keyframes */
+@keyframes expand {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Host deep overrides */
+:host ::ng-deep .mat-drawer.collapsed {
+  width: 64px !important;
+}
+
+/* Responsiveness */
+@media (max-width: 800px) {
+  .gb-sidenav {
+    width: 200px;
+  }
+}
+
+@media (max-width: 959px) {
+  .gb-sidenav {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: calc(100vh - 64px);
+    padding-top: 8px;
+
+    .gb-sidenav__list {
+      padding-bottom: 20px;
+      overflow-y: auto;
+      max-height: calc(100vh - 120px);
+    }
+
+    .gb-sidenav__title {
+      white-space: normal;
+      word-break: break-word;
+      display: inline-block;
+    }
+
+    .gb-sidenav__submenu-link {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
