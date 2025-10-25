@@ -7,6 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from '../../layout/header/header';
 import { SidenavComponent } from '../../layout/sidenav/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { RouterOutlet } from "@angular/router";
 
 
 @Component({
@@ -20,7 +21,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     MatListModule,
     HeaderComponent,
     SidenavComponent,
-  ],
+    RouterOutlet
+],
   templateUrl: './administracao-home.html',
   styleUrl: './administracao-home.css'
 })
