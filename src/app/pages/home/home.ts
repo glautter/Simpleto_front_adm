@@ -21,7 +21,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     MatListModule,
   ],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrl: './home.scss'
 })
 export class HomeComponent {
   @ViewChild(MatSidenav)
