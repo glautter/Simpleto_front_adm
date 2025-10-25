@@ -1,33 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
-import { HeaderComponent } from '../../layout/header/header';
-import { SidenavComponent } from '../../layout/sidenav/sidenav';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { HeaderComponent } from "../../layout/header/header";
+import { MatSidenavContainer, MatSidenav, MatSidenavContent } from "@angular/material/sidenav";
+import { SidenavComponent } from "../../layout/sidenav/sidenav";
 import { RouterOutlet } from "@angular/router";
-
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
-  selector: 'administracao-home',
+  selector: 'app-administracao-home',
   standalone: true,
-  imports: [
-    MatSidenavModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
-    HeaderComponent,
-    SidenavComponent,
-    RouterOutlet
-],
+  imports: [HeaderComponent, MatSidenavContainer, MatSidenav, SidenavComponent, MatSidenavContent, RouterOutlet],
   templateUrl: './administracao-home.html',
-  styleUrl: './administracao-home.scss'
+  styleUrls: ['./administracao-home.scss']
 })
 export class AdministracaoHomeComponent {
-  @ViewChild(MatSidenav)
+@ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isSidenavOpen = true;
   isMobile = false;
@@ -36,7 +22,6 @@ export class AdministracaoHomeComponent {
 
   ngAfterViewInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
-    setTimeout(() => {
       if (res.matches) {
         this.isMobile = true;
         this.sidenav.mode = 'over';
@@ -49,7 +34,6 @@ export class AdministracaoHomeComponent {
         this.isSidenavOpen = true;
       }
     });
-  });
   }
 
   toggleSidenav() {
@@ -73,4 +57,5 @@ export class AdministracaoHomeComponent {
     this.isSidenavOpen = !this.isSidenavOpen;
     console.log('toggleSidenav: isSidenavOpen=', this.isSidenavOpen);
   }
+
 }

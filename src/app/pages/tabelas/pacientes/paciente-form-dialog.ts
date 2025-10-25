@@ -17,7 +17,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
   standalone: true,
   imports: [CommonModule, PacienteFormComponent, MatInputModule, MatFormFieldModule, MatButtonModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatRadioModule, MatTooltipModule],
   templateUrl: './paciente-form-dialog.html',
-  styleUrls: ['./paciente-form-dialog.css']
+  styleUrls: ['./paciente-form-dialog.scss']
 })
 export class PacienteFormDialogComponent {
   @ViewChild('formComp') formComp!: PacienteFormComponent;

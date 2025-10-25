@@ -16,8 +16,7 @@
       </button>
 
       <!-- CHILDREN (Nível 1) -->
-       @if (expandedItem === item.title) {
-      <ul class="gb-sidenav__submenu">
+      <ul *ngIf="expandedItem === item.title" class="gb-sidenav__submenu">
         <li *ngFor="let child of item.children" [class.active]="activeChild === child.title">
           
           <!-- Child SEM subChildren - Link direto -->
@@ -67,7 +66,6 @@
 
         </li>
       </ul>
-    }
     </li>
   </ul>
 </nav>

@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ListBaseComponent } from '../../../../shared/list-base/list-base.component';
-// ❌ REMOVA esta importação:
-// import { EstadioFormDialogComponent } from './estadio-form-dialog';
 import { EstadioService } from './estadio.service';
 import { Estadio } from '../../../../shared/models/tabelas/estadio.model';
 
@@ -12,7 +10,7 @@ import { Estadio } from '../../../../shared/models/tabelas/estadio.model';
   standalone: true,
   imports: [CommonModule, ListBaseComponent, MatDialogModule ],
   templateUrl: './estadio.html',
-  styleUrls: ['./estadio.css']
+  styleUrls: ['./estadio.scss']
 })
 export class EstadioComponent {
   data: Estadio[] = [];

@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
   templateUrl: './estadio-form.html',
-  styleUrls: ['./estadio-form.css']
+  styleUrls: ['./estadio-form.scss']
 })
 export class EstadioFormComponent {
   @Input() initialData: any = {};

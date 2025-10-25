@@ -1,14 +1,15 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { provideRouter } from '@angular/router';
-import { AppComponent } from './app/core/component/component';
-import { routes } from './app/app.routes';
-import { tenantInterceptor } from './app/core/tenant.interceptor';
+import { appConfig } from './app/app.config';
+import { App } from './app/app';
 
-
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(routes),
-    provideHttpClient(withInterceptors([tenantInterceptor]))
-  ]
-}).catch(err => console.error(err));
+// Register GOV.BR web components
+// @ts-ignore: loader is a runtime-only module without types
+import('@govbr-ds/webcomponents/dist/esm/loader.js')
+  .then(() => {
+    bootstrapApplication(App, appConfig).catch((err) => console.error(err));
+  })
+  .catch((err) => {
+    console.error('Failed to load govbr webcomponents:', err);
+    // still try to bootstrap the Angular app
+    bootstrapApplication(App, appConfig).catch((err) => console.error(err));
+  });

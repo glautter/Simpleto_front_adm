@@ -9,7 +9,7 @@ import { CrudTabsConfig } from '../../../shared/models/crud-tabs-form/crud-tabs-
   standalone: true,
   imports: [CommonModule, CrudTabsFormComponent],
   templateUrl: './funcionario-form.html',
-  styleUrls: ['./funcionario-form.css']
+  styleUrls: ['./funcionario-form.scss']
 })
 export class FuncionarioFormComponent {
   @Input() initialData: any = {};

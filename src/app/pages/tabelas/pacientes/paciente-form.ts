@@ -36,9 +36,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule,
   ],
   templateUrl: './paciente-form.html',
-  styleUrls: ['./paciente-form.css'],
+  styleUrls: ['./paciente-form.scss'],
 })
 export class PacienteFormComponent implements OnChanges {
+  @Input() title: string = '';
   @Input() initialData: any = {};
   @Input() sexoOptions: { value: any; label: string }[] = [];
   @Input() racaOptions: { value: any; label: string }[] = [];

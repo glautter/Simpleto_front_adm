@@ -1,7 +1,4 @@
-// =========================================================
-// 🧩 Componente Base (Container Principal / CRUD / Tabela)
-// =========================================================
-
+/* ====== CONTAINER PRINCIPAL ====== */
 .base {
   background: #ffffff;
   border-radius: 12px;
@@ -10,186 +7,111 @@
   border: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
-  // max-height: calc(100vh - 220px);
-
-  // ====== Cabeçalho ======
-  &__header {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 1.75rem;
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-    color: #fff;
-
-    .base__title {
-      font-weight: 650;
-      font-size: 1.25rem;
-      letter-spacing: -0.02em;
-      margin: 0;
-    }
-
-    .base__controls {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-
-      .base__search {
-        input {
-          padding: 0.625rem 0.875rem;
-          border-radius: 8px;
-          border: 1px solid #cbd5e1;
-          font-size: 0.938rem;
-          color: #334155;
-          min-width: 220px;
-          transition: all 0.2s ease;
-
-          &:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-            outline: none;
-          }
-        }
-      }
-
-      .base__actions {
-        .btn {
-          background: #eff6ff;
-          border: 1px solid #bfdbfe;
-          color: #1d4ed8;
-          padding: 0.5rem 0.875rem;
-          border-radius: 8px;
-          font-weight: 650;
-          font-size: 0.938rem;
-          transition: all 0.3s ease;
-
-          &:hover {
-            background: #dbeafe;
-            transform: translateY(-2px);
-          }
-
-          &.icon {
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            padding: 4px !important;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            mat-icon {
-              color: #ffffff !important;
-              font-size: 24px;
-              transition: color 0.2s ease;
-
-              &:hover {
-                color: #2563eb;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  // ====== Tabela ======
-  &__table {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: auto;
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-
-      thead {
-        th {
-          position: sticky;
-          top: 0;
-          background: #f8fafc;
-          color: #475569;
-          font-weight: 650;
-          font-size: 0.875rem;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          padding: 1rem 1.5rem;
-          border-bottom: 2px solid #e2e8f0;
-          z-index: 2;
-        }
-      }
-
-      td {
-        padding: 1rem 1.5rem;
-        color: #334155;
-        font-size: 0.938rem;
-        border-bottom: 1px solid #f1f5f9;
-      }
-
-      tr {
-        transition: all 0.2s ease;
-
-        &:hover {
-          background-color: #f8fafc;
-        }
-      }
-    }
-
-    // Scrollbar personalizada
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 8px;
-
-      &:hover {
-        background: #94a3b8;
-      }
-    }
-  }
-
-  // ====== Rodapé / Paginação ======
-  &__footer {
-    flex-shrink: 0;
-    padding: 0.75rem 1.5rem;
-    background: #fafafa;
-    border-top: 1px solid #e2e8f0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    .pagination {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-
-      button {
-        padding: 0.5rem 0.75rem;
-        border-radius: 8px;
-        border: 1px solid #e2e8f0;
-        background: #fff;
-        transition: all 0.2s ease;
-
-        &:hover {
-          background-color: #f1f5f9;
-        }
-      }
-
-      span {
-        color: #475569;
-        font-weight: 500;
-      }
-    }
-  }
+  /* max-height: calc(100vh - 220px); Altura máxima dinâmica */
 }
 
-// =========================================================
-// ⚙️ Ações e Botões de Ícone
-// =========================================================
+/* ====== CABEÇALHO ====== */
+.base__header {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.75rem;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #fff;
+}
 
+.base__title {
+  font-weight: 650;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ====== CONTROLES (Ações + Busca) ====== */
+.base__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.base__search input {
+  padding: 0.625rem 0.875rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.938rem;
+  color: #334155;
+  min-width: 220px;
+  transition: all 0.2s ease;
+}
+
+.base__search input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+/* ====== BOTÕES DE AÇÃO ====== */
+.base__actions .btn {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  padding: 0.5rem 0.875rem;
+  border-radius: 8px;
+  font-weight: 650;
+  font-size: 0.938rem;
+  transition: all 0.3s ease;
+}
+
+.base__actions .btn:hover {
+  background: #dbeafe;
+  transform: translateY(-2px);
+}
+
+/* ====== ÁREA DA TABELA (ROLÁVEL) ====== */
+.base__table {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+/* ====== TABELA ====== */
+.base__table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.base__table thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 650;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  z-index: 2;
+}
+
+.base__table td {
+  padding: 1rem 1.5rem;
+  color: #334155;
+  font-size: 0.938rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.base__table tr {
+  transition: all 0.2s ease;
+}
+
+.base__table tr:hover {
+  background-color: #f8fafc;
+}
+
+/* ====== COLUNA DE AÇÕES ====== */
 .actions {
   text-align: center;
   white-space: nowrap;
@@ -199,6 +121,7 @@
   gap: 0.5rem;
 }
 
+/* ====== BOTÕES DE ÍCONE ====== */
 .btn-icon {
   position: relative;
   display: inline-flex;
@@ -211,67 +134,138 @@
   cursor: pointer;
   transition: all 0.2s ease;
   background-color: transparent;
-
-  mat-icon,
-  i {
-    font-size: 20px;
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-
-  // Tooltip
-  .tooltip {
-    position: absolute;
-    bottom: 110%;
-    left: 50%;
-    transform: translateX(-50%) translateY(0);
-    background: #1f2937;
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 500;
-    padding: 0.375rem 0.75rem;
-    border-radius: 0.375rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.2s ease;
-    z-index: 10;
-  }
-
-  &:hover .tooltip {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-4px);
-  }
-
-  &.btn-edit {
-    color: #3b82f6;
-
-    &:hover {
-      background-color: #eff6ff;
-    }
-  }
-
-  &.btn-delete {
-    color: #ef4444;
-
-    &:hover {
-      background-color: #fef2f2;
-    }
-  }
 }
 
-// =========================================================
-// 🧮 Formulário CRUD
-// =========================================================
+.btn-icon mat-icon,
+.btn-icon i {
+  font-size: 20px;
+}
+
+.btn-icon:hover {
+  transform: translateY(-2px);
+}
+
+/* Editar */
+.btn-edit {
+  color: #3b82f6;
+}
+.btn-edit:hover {
+  background-color: #eff6ff;
+}
+
+/* Excluir */
+.btn-delete {
+  color: #ef4444;
+}
+.btn-delete:hover {
+  background-color: #fef2f2;
+}
+
+/* ====== TOOLTIP ====== */
+.btn-icon .tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background: #1f2937;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.btn-icon:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* ====== RODAPÉ / PAGINAÇÃO ====== */
+.base__footer {
+  flex-shrink: 0;
+  padding: 0.75rem 1.5rem;
+  background: #fafafa;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pagination button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover {
+  background-color: #f1f5f9;
+}
+
+.pagination span {
+  color: #475569;
+  font-weight: 500;
+}
+
+/* ====== SCROLLBAR PERSONALIZADA ====== */
+.base__table::-webkit-scrollbar {
+  width: 8px;
+}
+
+.base__table::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+
+.base__table::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ====== RESPONSIVO ====== */
+@media (max-width: 768px) {
+  .base {
+    max-height: none;
+  }
+
+  .base__header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .base__title {
+    font-size: 1.125rem;
+  }
+
+  .base__table th,
+  .base__table td {
+    padding: 0.75rem 1rem;
+  }
+
+  .btn-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
 
 .crud-form__grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 4px;
+  gap: 4px; /* reduz o espaçamento entre os campos */
   width: 100%;
-  padding: 10px;
+  padding: 10px 10px 10px 10px;
 }
 
 .crud-form__field {
@@ -285,45 +279,43 @@
   width: 100%;
 }
 
-// =========================================================
-// ✏️ Campos Material Design
-// =========================================================
+/* ====== CAMPOS MATERIAL DESIGN ====== */
 
 .mat-mdc-form-field {
   background-color: white;
-  margin-bottom: 2px;
-  line-height: 1.2;
-
-  .mat-mdc-text-field-wrapper {
-    min-height: 36px !important;
-    padding: 0 4px !important;
-  }
-
-  .mat-mdc-form-field-infix {
-    padding: 2px 0 !important;
-  }
-
-  .mat-mdc-form-field-outline {
-    border-radius: 8px;
-  }
-
-  .mat-mdc-form-field-label-wrapper {
-    top: -6px !important;
-  }
-
-  .mat-mdc-form-field-label {
-    font-size: 0.85rem !important;
-  }
-
-  .mat-mdc-input-element {
-    font-size: 0.9rem !important;
-    padding: 2px 0 !important;
-  }
+  margin-bottom: 2px; /* reduz espaço vertical */
+  line-height: 1.2; /* reduz altura visual */
 }
 
-// =========================================================
-// 🪄 Botões globais
-// =========================================================
+.mat-mdc-text-field-wrapper {
+  min-height: 36px !important; /* altura mais compacta */
+  padding: 0 4px !important;
+}
+
+.mat-mdc-form-field-infix {
+  padding: 2px 0 !important; /* controla a altura interna */
+}
+
+.mat-mdc-form-field-outline {
+  border-radius: 8px;
+}
+
+/* ====== AJUSTE GERAL ====== */
+
+.mat-mdc-form-field-label-wrapper {
+  top: -6px !important;
+}
+
+.mat-mdc-form-field-label {
+  font-size: 0.85rem !important;
+}
+
+.mat-mdc-input-element {
+  font-size: 0.9rem !important;
+  padding: 2px 0 !important;
+}
+
+/* ====== BOTÕES ====== */
 
 button {
   border-radius: 6px;
@@ -331,34 +323,23 @@ button {
   padding: 0 12px;
 }
 
-// =========================================================
-// 📱 Responsividade
-// =========================================================
+.base__actions .btn.icon {
+  background: transparent !important; /* remove fundo */
+  border: none !important; /* remove borda */
+  box-shadow: none !important; /* remove sombra */
+  padding: 4px !important; /* espaçamento mínimo ao redor do ícone */
+  cursor: pointer; /* mantém aparência de botão clicável */
+  display: flex; /* centraliza o ícone */
+  align-items: center;
+  justify-content: center;
+}
 
-@media (max-width: 768px) {
-  .base {
-    max-height: none;
+.base__actions .btn.icon mat-icon {
+  color: #ffffff !important;
+  font-size: 24px;
+  transition: color 0.2s ease;
+}
 
-    &__header {
-      flex-direction: column;
-      gap: 1rem;
-      text-align: center;
-    }
-
-    &__title {
-      font-size: 1.125rem;
-    }
-
-    &__table {
-      th,
-      td {
-        padding: 0.75rem 1rem;
-      }
-    }
-  }
-
-  .btn-icon {
-    width: 32px;
-    height: 32px;
-  }
+.base__actions .btn.icon:hover mat-icon {
+  color: #2563eb; /* muda de cor ao passar o mouse */
 }

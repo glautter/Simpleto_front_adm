@@ -9,7 +9,7 @@ import { FuncionarioFormComponent } from './funcionario-form';
   standalone: true,
   imports: [CommonModule, FuncionarioFormComponent],
   templateUrl: './funcionario-form-dialog.html',
-  styles: []
+  styleUrls: ['./funcionario-form-dialog.scss']
 })
 export class FuncionarioDialogComponent {
   @ViewChild('formComp') formComp!: FuncionarioFormComponent;

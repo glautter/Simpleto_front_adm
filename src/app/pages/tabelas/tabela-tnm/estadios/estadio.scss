@@ -1,0 +1,130 @@
+/* === Estilos do módulo Estádio (padrão Paciente) === */
+
+:host {
+    display: block;
+    padding: 10px;
+    background-color: #f9fafc;
+    font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Título da página */
+  h2.page-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #2c3e50;
+  }
+  
+  /* Container principal */
+  .container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+  }
+  
+  /* Toolbar superior com botão de adicionar */
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .toolbar .title {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  .toolbar .actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  /* Tabela de listagem */
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  thead th {
+    text-align: left;
+    background-color: #f4f6f9;
+    color: #444;
+    padding: 10px 12px;
+    font-weight: 500;
+    border-bottom: 1px solid #e1e6ed;
+  }
+  
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f3f7;
+    vertical-align: middle;
+    color: #333;
+  }
+  
+  /* Estado vazio */
+  .empty-state {
+    padding: 24px;
+    text-align: center;
+    color: #777;
+    font-size: 0.95rem;
+  }
+  
+  /* Botões de ação */
+  .btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #444;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn-action:hover {
+    background-color: #f2f4f8;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Ícones nos botões */
+  .btn-action mat-icon {
+    font-size: 18px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  
+  /* Linha de ações da tabela */
+  .row-actions {
+    display: flex;
+    gap: 6px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    :host {
+      padding: 16px;
+    }
+  
+    table th, table td {
+      padding: 8px;
+      font-size: 0.9rem;
+    }
+  
+    .toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }
+  

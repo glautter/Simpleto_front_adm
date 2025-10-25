@@ -10,7 +10,7 @@ import { FuncionarioFormComponent } from './funcionario-form';
   standalone: true,
   imports: [ ListBaseComponent, CommonModule],
   templateUrl: './funcionarios.html',
-  styleUrls: ['./funcionarios.css']
+  styleUrls: ['./funcionarios.scss']
 })
 export class FuncionariosComponent {
   constructor(private dialog: MatDialog) {}
