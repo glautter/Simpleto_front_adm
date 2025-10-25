@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="estadio-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição do Estádio</mat-label>
+      <input matInput formControlName="descricaoEstadio" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>T</mat-label>
+      <input matInput formControlName="descricaoT" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>N</mat-label>
+      <input matInput formControlName="descricaoN" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>M</mat-label>
+      <input matInput formControlName="descricaoM" />
+    </mat-form-field>
+  
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit">Salvar</button>
+      <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+  

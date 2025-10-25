@@ -1,0 +1,80 @@
+<section class="base">
+  <header class="base__header">
+    <div class="base__title">{{ title || 'Lista' }}</div>
+    <div class="base__controls">
+      <div class="base__actions">
+        <button class="btn icon" (click)="doClose()"><mat-icon>close</mat-icon></button>
+      </div>
+    </div>
+  </header>
+  <form [formGroup]="form" (ngSubmit)="submit()" class="crud-form mat-form">
+    <div class="crud-form__grid">
+      <ng-container *ngFor="let f of fields; let i = index">
+        <div
+          class="crud-form__field"
+          *ngIf="f.visible !== false"
+          [style.gridColumn]="'span ' + getSpan(f)"
+        >
+          <mat-form-field appearance="fill" floatLabel="auto" class="underline-field full-width">
+            <mat-label>{{ f.label }}</mat-label>
+
+            <!-- Switch de tipos -->
+            <ng-container [ngSwitch]="f.type">
+              <!-- Texto -->
+              <input
+                *ngSwitchCase="'text'"
+                matInput
+                [formControlName]="f.key"
+                [attr.disabled]="f.disabled || readOnly ? true : null"
+                (input)="applyMask($event, f)"
+              />
+
+              <!-- Número -->
+              <input *ngSwitchCase="'number'" matInput type="number" [formControlName]="f.key" />
+
+              <!-- Data -->
+              <ng-container *ngSwitchCase="'date'">
+                <input
+                  matInput
+                  [matDatepicker]="datepicker"
+                  [formControlName]="f.key"
+                  [id]="'date-' + i"
+                />
+                <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker></mat-datepicker>
+              </ng-container>
+
+              <!-- Select -->
+              <mat-select *ngSwitchCase="'select'" [formControlName]="f.key">
+                <mat-option *ngFor="let o of f.options" [value]="o.value">{{ o.label }}</mat-option>
+              </mat-select>
+
+              <!-- Checkbox -->
+              <mat-checkbox *ngSwitchCase="'checkbox'" [formControlName]="f.key">{{
+                f.label
+              }}</mat-checkbox>
+
+              <!-- Textarea -->
+              <textarea *ngSwitchCase="'textarea'" matInput [formControlName]="f.key"></textarea>
+
+              <!-- Default -->
+              <input *ngSwitchDefault matInput [formControlName]="f.key" />
+            </ng-container>
+
+            <mat-error *ngIf="form.get(f.key)?.invalid && form.get(f.key)?.touched">
+              Campo obrigatório
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </ng-container>
+    </div>
+  </form>
+  <footer class="base__footer">
+    <div class="base__actions" style="display: flex; justify-content: flex-end; padding: 1rem">
+      <button mat-raised-button color="primary">
+        <mat-icon>save</mat-icon>
+        Salvar
+      </button>
+    </div>
+  </footer>
+</section>

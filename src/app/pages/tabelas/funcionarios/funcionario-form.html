@@ -1,0 +1,9 @@
+<!-- funcionario-form.component.html -->
+<div class="funcionario-form">
+  <app-crud-tabs-form 
+    [config]="config"
+    [initialData]="initialData"
+    (save)="onSave($event)"
+    (cancel)="onCancel()">
+  </app-crud-tabs-form>
+</div>

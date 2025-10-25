@@ -1,0 +1,55 @@
+/* Minimal header styles adapted to gov.br tokens */
+.gb-topbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  background: #fff; color: #0b3a7b; box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  padding: 10px 18px;
+}
+.gb-topbar__left { display:flex; align-items:center; gap:12px }
+.gb-topbar__center { display:flex; justify-content:center }
+.gb-topbar__right { display:flex; align-items:center; gap:12px }
+.gb-brand { display:flex; align-items:center; gap:12px }
+.gb-logo { color: var(--govbr-primary); font-weight:700; font-size:1.1rem; line-height:1 }
+.gb-logo--accent { color: #ffcd00; font-weight:700 }
+.header-logo img { height: 36px; display:block }
+.gb-brand__texts { display:flex; flex-direction:column }
+.gb-brand__title { font-weight:600; font-size:18px }
+.gb-brand__subtitle { font-size:0.75rem; opacity:0.8 }
+
+/* Requested focus/interactive styling for brand title */
+.gb-brand__title {
+  color: var(--interactive);
+  text-decoration: none;
+  outline: none;
+}
+.gb-brand__title:focus-visible {
+  box-shadow: 0 0 0 var(--focus-offset) rgba(19,81,180,0.15);
+  border-radius: 4px;
+}
+
+.gb-search { display:flex; align-items:center; gap:8px; background:#f3f6fb; padding:8px 12px; border-radius:8px }
+.gb-search input { border:none; background:transparent; outline:none; width:180px; font-size:0.95rem }
+.gb-actions button { margin-left:6px }
+.gb-topbar .mat-icon { font-size:20px }
+
+@media (max-width: 959px) {
+  /* enlarge the X close icon and make it high contrast */
+  .gb-menu-btn .fa-times {
+    font-size: 18px;
+    color: var(--govbr-primary, #06327a);
+  }
+
+  .gb-menu-btn.mat-icon-button {
+    background: rgba(255,255,255,0.92);
+    border-radius: 6px;
+    padding: 6px;
+  }
+
+  .gb-search input { width: 220px; }
+  .gb-topbar { padding: 8px 12px }
+  .gb-topbar { grid-template-columns: auto 1fr auto }
+  .gb-topbar__center { justify-content: start }
+}
+/* make header fixed and overlay the sidenav */
+:host ::ng-deep .gb-topbar { position: sticky; top: 0; z-index: 1200; }

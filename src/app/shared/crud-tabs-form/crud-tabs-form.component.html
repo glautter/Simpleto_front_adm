@@ -1,0 +1,33 @@
+<!-- crud-tabs-form.component.html -->
+<div class="crud-tabs">
+  <!-- Navegação das Abas -->
+  <div class="crud-tabs__nav" [class.crud-tabs__nav--top]="config.showTabsOnTop">
+    <button 
+      *ngFor="let tab of config.tabs" 
+      type="button"
+      class="crud-tabs__tab"
+      [class.crud-tabs__tab--active]="isTabActive(tab.id)"
+      [disabled]="tab.disabled"
+      (click)="selectTab(tab.id)">
+      <span *ngIf="tab.icon" class="crud-tabs__icon">{{ tab.icon }}</span>
+      <span class="crud-tabs__label">{{ tab.label }}</span>
+    </button>
+  </div>
+
+  <!-- Conteúdo da Aba Ativa -->
+  <div class="crud-tabs__content">
+    <app-crud-form 
+      #crudForm
+      [fields]="currentFields" 
+      [initialData]="allFormData"
+      [readOnly]="readOnly"
+      (save)="onSaveTab($event)">
+    </app-crud-form>
+  </div>
+
+  <!-- Ações do Formulário -->
+  <div class="crud-tabs__actions" *ngIf="!readOnly">
+    <button type="button" class="btn" (click)="doCancel()">Cancelar</button>
+    <button type="button" class="btn primary" (click)="submit()">Salvar</button>
+  </div>
+</div>

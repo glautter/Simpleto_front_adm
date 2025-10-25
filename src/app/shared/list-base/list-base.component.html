@@ -1,0 +1,77 @@
+<section class="base">
+  <header class="base__header">
+    <div class="base__title">{{ title || 'Lista' }}</div>
+    <div class="base__controls">
+      <div class="base__search">
+        <input placeholder="Pesquisar em todas colunas..." [(ngModel)]="filterText" />
+      </div>
+      <div class="base__actions">
+        <button *ngIf="showAdd" (click)="onAdd()" class="btn">Incluir</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="base__table">
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let c of columns" [style.width]="c.width">{{ c.title }}</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paged">
+          <td *ngFor="let c of columns">{{ getValue(row, c.key) }}</td>
+          <td class="actions">
+            <button *ngIf="showEdit" (click)="onEdit(row)" class="btn-icon btn-edit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                <path d="m15 5 4 4" />
+              </svg>
+              <span class="tooltip">Editar</span>
+            </button>
+
+            <button *ngIf="showDelete" (click)="onDelete(row)" class="btn-icon btn-delete">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 6h18" />
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                <line x1="10" x2="10" y1="11" y2="17" />
+                <line x1="14" x2="14" y1="11" y2="17" />
+              </svg>
+              <span class="tooltip">Excluir</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="base__footer">
+    <div class="pagination">
+      <button (click)="goto(page - 1)" [disabled]="page <= 1">«</button>
+      <span>Página {{ page }} / {{ totalPages }}</span>
+      <button (click)="goto(page + 1)" [disabled]="page >= totalPages">»</button>
+    </div>
+  </footer>
+</section>

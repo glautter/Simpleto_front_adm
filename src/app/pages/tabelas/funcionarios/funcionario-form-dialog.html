@@ -1,0 +1,21 @@
+<div class="card">
+      <header class="card__header">
+        <div class="card__title">{{ data.title || 'Cadastro de Funcionário' }}</div>
+        <div class="card__actions">
+          <button class="btn icon" (click)="onCancel()">✕</button>
+        </div>
+      </header>
+      <div class="card__body">
+        <app-funcionario-form 
+          #formComp 
+          [initialData]="data.initial"
+          (save)="onSave($event)">
+        </app-funcionario-form>
+      </div>
+      <footer class="card__footer">
+        <div class="card__actions">
+          <button class="btn" (click)="onCancel()">Cancelar</button>
+          <button class="btn primary" (click)="saveFromChild()">Salvar</button>
+        </div>
+      </footer>
+    </div>

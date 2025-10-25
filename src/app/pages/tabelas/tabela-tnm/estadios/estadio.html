@@ -1,0 +1,14 @@
+<div class="page-estadios">
+  <div class="list-area">
+    <app-list-base
+      [title]="'Estádios'"
+      [columns]="columns"
+      [data]="data"
+      (add)="onAdd()"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)">
+    </app-list-base>
+  </div>
+</div>
+
+  
