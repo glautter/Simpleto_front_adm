@@ -12,7 +12,7 @@ export interface ColumnDef {
   selector: 'app-list-base',
   standalone: true,
   templateUrl: './list-base.component.html',
-  styleUrls: ['./../base-css/base.component.css'],
+  styleUrls: ['./../base-css/base.component.scss'],
   imports: [CommonModule, FormsModule]
 })
 export class ListBaseComponent<T = any> {

@@ -1,0 +1,27 @@
+.sidenav-container {
+  height: 100%;
+  position: relative;
+}
+
+.sidenav {
+  width: 250px;
+  transition: width 200ms ease;
+}
+
+.page-hero {
+  background: linear-gradient(180deg, #e9f7fb, #f7fbfe);
+  border-radius: 8px;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.content-grid {
+  display: flex;
+  gap: 24px;
+}
+.card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(9, 30, 63, 0.06);
+}

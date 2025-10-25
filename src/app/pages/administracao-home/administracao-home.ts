@@ -24,7 +24,7 @@ import { RouterOutlet } from "@angular/router";
     RouterOutlet
 ],
   templateUrl: './administracao-home.html',
-  styleUrl: './administracao-home.css'
+  styleUrl: './administracao-home.scss'
 })
 export class AdministracaoHomeComponent {
   @ViewChild(MatSidenav)

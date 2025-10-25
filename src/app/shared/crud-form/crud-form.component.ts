@@ -36,7 +36,7 @@ import { MatIcon } from '@angular/material/icon';
     MatIcon,
   ],
   templateUrl: './crud-form.component.html',
-  styleUrls: ['./../base-css/base.component.css'],
+  styleUrls: ['./../base-css/base.component.scss'],
 })
 export class CrudFormComponent implements OnChanges {
   @Input() title: string = '';
