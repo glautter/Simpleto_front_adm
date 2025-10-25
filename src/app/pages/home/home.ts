@@ -25,5 +25,4 @@ export class HomeComponent {
   isMobile = false;
 
   constructor(private observer: BreakpointObserver) {}
-
 }
