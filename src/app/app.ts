@@ -9,7 +9,5 @@ import { Router, RouterOutlet } from "@angular/router";
 })
 export class App {
   protected readonly title = signal('condo-admin-simpleto');
-  irParaHome(){
-      window.location.href = '/home';
-  }
+
 }
