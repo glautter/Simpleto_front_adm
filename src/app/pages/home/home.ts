@@ -14,14 +14,11 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   selector: 'app-home',
   standalone: true,
   imports: [
-    RouterOutlet,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     MatListModule,
-    HeaderComponent,
-    SidenavComponent,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -34,41 +31,4 @@ export class HomeComponent {
 
   constructor(private observer: BreakpointObserver) {}
 
-  ngAfterViewInit() {
-    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
-      if (res.matches) {
-        this.isMobile = true;
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-        this.isSidenavOpen = false;
-      } else {
-        this.isMobile = false;
-        this.sidenav.mode = 'side';
-        this.sidenav.open();
-        this.isSidenavOpen = true;
-      }
-    });
-  }
-
-  toggleSidenav() {
-    // Toggle the drawer open/close. On mobile this opens the overlay to full width.
-    if (this.sidenav.mode === 'over') {
-      if (this.isSidenavOpen) {
-        this.sidenav.close();
-      } else {
-        this.sidenav.open();
-      }
-      this.isSidenavOpen = !this.isSidenavOpen;
-      return;
-    }
-
-    // Desktop: toggle show/hide the sidenav
-    if (this.isSidenavOpen) {
-      this.sidenav.close();
-    } else {
-      this.sidenav.open();
-    }
-    this.isSidenavOpen = !this.isSidenavOpen;
-    console.log('toggleSidenav: isSidenavOpen=', this.isSidenavOpen);
-  }
 }

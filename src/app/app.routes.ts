@@ -5,17 +5,17 @@ import { AppComponent } from './core/component/component';
 import { PacientesComponent } from './pages/tabelas/pacientes/pacientes';
 import { FuncionariosComponent } from './pages/tabelas/funcionarios/funcionarios';
 import { EstadioComponent } from './pages/tabelas/tabela-tnm/estadios/estadio';
-import { HomeComponent } from './pages/home/home';
+import { AdministracaoHomeComponent } from './pages/administracao-home/administracao-home';
 
 export const routes: Routes = [
   { path: '', component: AppComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: AdministracaoHomeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'condominios', component: CondominiosComponent },
   { path: 'pacientes', component: PacientesComponent },
   { path: 'funcionarios', component: FuncionariosComponent },
   { path: 'estadios', component: EstadioComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'home' }
 ];
 
 
