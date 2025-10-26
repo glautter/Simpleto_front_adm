@@ -1,31 +1,30 @@
-// Variáveis para manter consistência com o header
-$azul: #01586d;
+$verde: #01586d;
 $amarelo: #ffdd57;
-$azul-escuro: background-color($azul, 5%);
 
-/* Sidenav com cores do sistema */
 .gb-sidenav {
-  width: 250px;
-  background: $azul;
-  /* mesma cor do header */
+  background: $verde;
   color: #fff;
-  height: 100%;
+  height: calc(100vh - 64px);
   overflow-y: auto;
-  padding-top: 8px;
+  overflow-x: hidden;
+  padding: 0;
   margin: 0;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-.gb-sidenav.collapsed {
-  width: 64px;
-}
-
-.gb-sidenav__list {
+.gb-sidenav__list,
+.gb-sidenav__submenu,
+.gb-sidenav__subsubmenu {
   list-style: none;
+  padding: 0;
   margin: 0;
-  padding: 8px 0;
 }
 
+/* Itens principais */
 .gb-sidenav__item {
   display: block;
 }
@@ -34,245 +33,75 @@ $azul-escuro: background-color($azul, 5%);
 .gb-sidenav__submenu-link {
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: space-between;
   width: 100%;
   border: none;
   background: transparent;
   text-align: left;
-  padding: 14px 20px;
+  padding: 12px 20px;
   color: #fff;
-  text-decoration: none;
   cursor: pointer;
-  transition: all 180ms ease;
+  transition: all 0.2s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
     color: $amarelo;
-    /* destaque amarelo no hover, igual ao header */
   }
-}
 
-.gb-sidenav__icon {
-  width: 28px;
-  height: 28px;
-  font-size: 22px;
-  flex-shrink: 0;
-}
-
-.gb-sidenav__icon-placeholder {
-  width: 28px;
-  height: 28px;
-  display: inline-block;
-  flex-shrink: 0;
-}
-
-.gb-sidenav__title {
-  white-space: nowrap;
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: inline-block;
-  max-width: 160px;
-  vertical-align: middle;
-  transition: color 180ms ease;
-}
-
-.gb-sidenav__chev {
-  margin-left: auto;
-  color: rgba(255, 255, 255, 0.7);
-  transition: color 180ms ease;
-}
-
-/* Separador entre itens principais */
-.gb-sidenav__item+.gb-sidenav__item {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Estados ativos - com destaque amarelo */
-.gb-sidenav__item.active>.gb-sidenav__button {
-  background: rgba(0, 0, 0, 0.2);
-  border-left: 4px solid $amarelo;
-  /* barra amarela lateral */
-  padding-left: 16px;
-}
-
-.gb-sidenav__item.active>.gb-sidenav__button .gb-sidenav__title,
-.gb-sidenav__item.active>.gb-sidenav__button .gb-sidenav__icon {
-  color: $amarelo;
-  /* texto amarelo quando ativo */
-  font-weight: 600;
-}
-
-.gb-sidenav__item.active>.gb-sidenav__button .gb-sidenav__chev {
-  color: $amarelo;
-}
-
-/* Submenu nível 1 */
-.gb-sidenav__submenu {
-  padding-left: 8px;
-  background-color: rgba(0, 0, 0, 0.15);
-  list-style: none;
-}
-
-/* Itens do submenu nível 1 */
-.gb-sidenav__submenu-link {
-  padding-left: 36px;
-  font-size: 0.95rem;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: $amarelo;
-
-    .gb-sidenav__icon {
-      color: $amarelo;
-    }
-  }
-}
-
-.gb-sidenav__submenu li.active>.gb-sidenav__submenu-link {
-  background: rgba(0, 0, 0, 0.2);
-  border-left: 3px solid $amarelo;
-  padding-left: 33px;
-
-  .gb-sidenav__title,
   .gb-sidenav__icon {
-    color: $amarelo;
-    font-weight: 600;
-  }
-}
-
-/* Subsubmenu nível 2 */
-.gb-sidenav__subsubmenu {
-  padding-left: 16px;
-  background-color: rgba(0, 0, 0, 0.25);
-  list-style: none;
-}
-
-.gb-sidenav__subsubmenu li {
-  list-style: none !important;
-  list-style-type: none !important;
-}
-
-.gb-sidenav__subsubmenu li::before,
-.gb-sidenav__subsubmenu li::marker {
-  display: none !important;
-  content: none !important;
-}
-
-.gb-sidenav__subsubmenu li>.gb-sidenav__submenu-link {
-  background-color: transparent;
-  font-size: 0.9rem;
-  padding-left: 60px;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    color: $amarelo;
-  }
-}
-
-.gb-sidenav__subsubmenu li.active>.gb-sidenav__submenu-link {
-  background: rgba(0, 0, 0, 0.2);
-  border-left: 2px solid $amarelo;
-  padding-left: 58px;
-
-  .gb-sidenav__title,
-  .gb-sidenav__icon {
-    color: $amarelo;
-    font-weight: 600;
-  }
-}
-
-/* Hidden state */
-.gb-sidenav .hidden {
-  display: none;
-}
-
-/* Collapsed state */
-.gb-sidenav.collapsed .gb-sidenav__button,
-.gb-sidenav.collapsed .gb-sidenav__submenu-link {
-  justify-content: center;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.gb-sidenav.collapsed .gb-sidenav__item.active>.gb-sidenav__button {
-  border-left: none;
-  border-bottom: 3px solid $amarelo;
-}
-
-/* Animação de expansão */
-@keyframes expand {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.gb-sidenav__submenu,
-.gb-sidenav__subsubmenu {
-  animation: expand 200ms ease-out;
-}
-
-/* Material drawer */
-:host ::ng-deep .mat-drawer.collapsed {
-  width: 64px !important;
-}
-
-/* Responsividade */
-@media (max-width: 959px) {
-  .gb-sidenav {
-    width: 100% !important;
-    max-width: 280px !important;
-    height: calc(100vh - 64px);
-    padding-top: 8px;
-  }
-
-  .gb-sidenav__list {
-    padding-bottom: 20px;
-    overflow-y: auto;
-    max-height: calc(100vh - 120px);
+    font-size: 22px;
+    margin-right: 8px;
   }
 
   .gb-sidenav__title {
-    white-space: normal;
-    word-break: break-word;
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .gb-sidenav__submenu-link {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .gb-sidenav .gb-sidenav__title {
-    display: inline-block;
-  }
-}
-
-@media (max-width: 800px) {
-  .gb-sidenav {
-    max-width: 250px;
+  .gb-sidenav__chev {
+    margin-left: auto;
+    color: rgba(255, 255, 255, 0.7);
   }
 }
 
-/* Scrollbar customizada */
-.gb-sidenav::-webkit-scrollbar {
-  width: 6px;
+/* Ativo */
+.gb-sidenav__item.active > .gb-sidenav__button {
+  background: rgba(0, 0, 0, 0.25);
+  border-left: 4px solid $amarelo;
+  color: $amarelo;
+
+  .gb-sidenav__chev {
+    color: $amarelo;
+  }
 }
 
-.gb-sidenav::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
+/* Submenus */
+.gb-sidenav__submenu {
+  background: rgba(0, 0, 0, 0.15);
 }
 
-.gb-sidenav::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
+.gb-sidenav__submenu-link {
+  padding-left: 40px;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
   }
+}
+
+.gb-sidenav__submenu li.active > .gb-sidenav__submenu-link {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid $amarelo;
+  color: $amarelo;
+}
+
+/* Sub-submenu */
+.gb-sidenav__subsubmenu {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.gb-sidenav__subsubmenu li a {
+  padding-left: 60px;
 }
