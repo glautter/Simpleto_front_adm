@@ -79,7 +79,7 @@ a {
       font-weight: bold;
 
       &:hover {
-        background-color: darken($amarelo, 10%) !important;
+        background-color: background-color($amarelo, 10%) !important;
       }
     }
   }
@@ -134,7 +134,7 @@ a {
       transition: 0.3s;
 
       &:hover {
-        background-color: darken($amarelo, 10%);
+        background-color: background-color($amarelo, 10%);
       }
     }
   }
@@ -269,14 +269,14 @@ a {
     border-radius: 5px;
 
     &:hover {
-      background-color: darken($amarelo, 10%);
+      background-color: background-color($amarelo, 10%);
     }
   }
 }
 
 // Footer
 .footer {
-  background-color: darken($azul, 10%);
+  background-color: background-color($azul, 10%);
   color: white;
   padding: 2rem 0;
   text-align: center;

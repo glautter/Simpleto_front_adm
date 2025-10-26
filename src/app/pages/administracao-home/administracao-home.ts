@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, ViewChild } from '@angular/core';
 import { HeaderComponent } from "../../layout/header/header";
 import { MatSidenavContainer, MatSidenav, MatSidenavContent } from "@angular/material/sidenav";
 import { SidenavComponent } from "../../layout/sidenav/sidenav";
@@ -11,15 +11,25 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   templateUrl: './administracao-home.html',
   styleUrls: ['./administracao-home.scss']
 })
-export class AdministracaoHomeComponent {
+export class AdministracaoHomeComponent implements OnInit {
+  sidenavMode: 'side' | 'over' = 'over';
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isSidenavOpen = true;
   isMobile = false;
 
-  constructor(private observer: BreakpointObserver) { }
+  constructor(private observer: BreakpointObserver, private cdr: ChangeDetectorRef) { }
+  ngOnInit(): void {
+    if (window.innerWidth > 768) {
+      this.sidenavMode = 'side';
+      this.cdr.detectChanges(); // força o Angular a aceitar a mudança
+    }
+  }
 
   ngAfterViewInit() {
+    if (window.innerWidth > 768) {
+      this.sidenavMode = 'side';
+    }
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.isMobile = true;

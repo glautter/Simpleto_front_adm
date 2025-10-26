@@ -1,7 +1,7 @@
 // Variáveis para manter consistência com o header
 $azul: #01586d;
 $amarelo: #ffdd57;
-$azul-escuro: darken($azul, 5%);
+$azul-escuro: background-color($azul, 5%);
 
 /* Sidenav com cores do sistema */
 .gb-sidenav {

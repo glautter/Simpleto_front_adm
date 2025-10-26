@@ -1,8 +1,8 @@
 // Variáveis para manter consistência
 $azul: #01586d;
 $amarelo: #ffdd57;
-$azul-claro: lighten($azul, 50%);
-$azul-hover: lighten($azul, 5%);
+$azul-claro: background-color($azul, 50%);
+$azul-hover: background-color($azul, 5%);
 
 /* ====== CONTAINER PRINCIPAL ====== */
 .base {
@@ -203,7 +203,7 @@ $azul-hover: lighten($azul, 5%);
 .base__footer {
   flex-shrink: 0;
   padding: 0.75rem 1.5rem;
-  background: lighten($azul, 58%);
+  background: background-color($azul, 58%);
   border-top: 1px solid #e2e8f0;
   display: flex;
   justify-content: flex-end;
@@ -256,7 +256,7 @@ $azul-hover: lighten($azul, 5%);
 }
 
 .base__table::-webkit-scrollbar-thumb {
-  background: lighten($azul, 30%);
+  background: background-color($azul, 30%);
   border-radius: 8px;
 }
 
@@ -414,7 +414,7 @@ button {
     font-size: 48px;
     width: 48px;
     height: 48px;
-    color: lighten($azul, 30%);
+    color: background-color($azul, 30%);
     margin-bottom: 1rem;
   }
 
