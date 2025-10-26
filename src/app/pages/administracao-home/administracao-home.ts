@@ -1,9 +1,12 @@
-import { Component, ChangeDetectorRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { HeaderComponent } from "../../layout/header/header";
 import { MatSidenavContainer, MatSidenav, MatSidenavContent } from "@angular/material/sidenav";
 import { SidenavComponent } from "../../layout/sidenav/sidenav";
 import { RouterOutlet } from "@angular/router";
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, PLATFORM_ID } from '@angular/core';
+
 @Component({
   selector: 'app-administracao-home',
   standalone: true,
@@ -11,25 +14,37 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   templateUrl: './administracao-home.html',
   styleUrls: ['./administracao-home.scss']
 })
-export class AdministracaoHomeComponent implements OnInit {
+export class AdministracaoHomeComponent implements OnInit, AfterViewInit {
   sidenavMode: 'side' | 'over' = 'over';
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isSidenavOpen = true;
   isMobile = false;
+  private isBrowser: boolean;
 
-  constructor(private observer: BreakpointObserver, private cdr: ChangeDetectorRef) { }
+  constructor(
+    private observer: BreakpointObserver,
+    private cdr: ChangeDetectorRef,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    // detecta se o código está rodando no navegador
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
   ngOnInit(): void {
-    if (window.innerWidth > 768) {
+    if (this.isBrowser && window.innerWidth > 768) {
       this.sidenavMode = 'side';
       this.cdr.detectChanges(); // força o Angular a aceitar a mudança
     }
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
+    if (!this.isBrowser) return; // impede execução no SSR
+
     if (window.innerWidth > 768) {
       this.sidenavMode = 'side';
     }
+
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.isMobile = true;
@@ -46,7 +61,9 @@ export class AdministracaoHomeComponent implements OnInit {
   }
 
   toggleSidenav() {
-    // Toggle the drawer open/close. On mobile this opens the overlay to full width.
+    if (!this.isBrowser) return; // evita erro em SSR
+
+    // Toggle o drawer
     if (this.sidenav.mode === 'over') {
       if (this.isSidenavOpen) {
         this.sidenav.close();
@@ -57,7 +74,7 @@ export class AdministracaoHomeComponent implements OnInit {
       return;
     }
 
-    // Desktop: toggle show/hide the sidenav
+    // Desktop
     if (this.isSidenavOpen) {
       this.sidenav.close();
     } else {
@@ -66,5 +83,4 @@ export class AdministracaoHomeComponent implements OnInit {
     this.isSidenavOpen = !this.isSidenavOpen;
     console.log('toggleSidenav: isSidenavOpen=', this.isSidenavOpen);
   }
-
 }
