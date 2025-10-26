@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { HeaderComponent } from '../../layout/header/header';
-import { SidenavComponent } from "../../layout/sidenav/sidenav";
 
 @Component({
   selector: 'app-pagina-web',
@@ -20,9 +19,8 @@ import { SidenavComponent } from "../../layout/sidenav/sidenav";
     MatButtonModule,
     MatIconModule,
     MatListModule,
-    HeaderComponent,
-    SidenavComponent
-  ]
+    HeaderComponent
+]
 })
 export class PaginaWebComponent implements AfterViewInit {
   @Output() menuToggle = new EventEmitter<void>();
