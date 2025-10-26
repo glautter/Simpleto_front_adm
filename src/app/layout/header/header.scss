@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $verde: #01586d;
 $amarelo: #ffdd57;
 
@@ -9,17 +11,16 @@ $amarelo: #ffdd57;
   height: 64px;
   background-color: $verde !important;
   color: white;
+  z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
 
   .navbar-content {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between; // mantém logo à esquerda e menu à direita
-    width: 100%;
+    justify-content: space-between;
     padding: 0 1.5rem;
   }
 
@@ -28,13 +29,12 @@ $amarelo: #ffdd57;
     height: 48px;
     background: url('../../../assets/imgs/logo_vv.png') no-repeat left center;
     background-size: contain;
-    flex-shrink: 0;
   }
 
   .menu {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
 
     ::ng-deep .mat-mdc-button {
       color: white;
@@ -44,13 +44,15 @@ $amarelo: #ffdd57;
       }
     }
 
-    ::ng-deep .btn-primary {
+    ::ng-deep .mat-mdc-raised-button.btn-primary {
       background-color: $amarelo !important;
       color: #000 !important;
       font-weight: bold;
+
       &:hover {
-        background-color: lighten($amarelo, 10%) !important;
+        background-color: color.scale($amarelo, $lightness: 10%) !important;
       }
+
     }
   }
 }

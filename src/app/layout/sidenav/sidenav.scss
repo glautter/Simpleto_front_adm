@@ -1,20 +1,8 @@
+@use 'sass:color';
+
 $verde: #01586d;
 $amarelo: #ffdd57;
-
-.gb-sidenav {
-  background: $verde;
-  color: #fff;
-  height: calc(100vh - 64px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0;
-  margin: 0;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
+$cinza-claro: #f4f4f4;
 
 .gb-sidenav__list,
 .gb-sidenav__submenu,
@@ -27,13 +15,13 @@ $amarelo: #ffdd57;
 /* Itens principais */
 .gb-sidenav__item {
   display: block;
+  width: 100%;
 }
 
 .gb-sidenav__button,
 .gb-sidenav__submenu-link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   border: none;
   background: transparent;
@@ -41,7 +29,7 @@ $amarelo: #ffdd57;
   padding: 12px 20px;
   color: #fff;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -50,12 +38,12 @@ $amarelo: #ffdd57;
 
   .gb-sidenav__icon {
     font-size: 22px;
-    margin-right: 8px;
+    margin-right: 10px;
+    flex-shrink: 0;
   }
 
   .gb-sidenav__title {
     flex: 1;
-    text-align: left;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -72,10 +60,6 @@ $amarelo: #ffdd57;
   background: rgba(0, 0, 0, 0.25);
   border-left: 4px solid $amarelo;
   color: $amarelo;
-
-  .gb-sidenav__chev {
-    color: $amarelo;
-  }
 }
 
 /* Submenus */
@@ -85,10 +69,6 @@ $amarelo: #ffdd57;
 
 .gb-sidenav__submenu-link {
   padding-left: 40px;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
 }
 
 .gb-sidenav__submenu li.active > .gb-sidenav__submenu-link {
