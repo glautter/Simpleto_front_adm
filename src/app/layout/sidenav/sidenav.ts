@@ -123,189 +123,458 @@ export class SidenavComponent {
   }
 
   menu: MenuItem[] = [
-  // --- Seção principal do sistema ---
-  {
-    title: 'Condomínio',
-    icon: 'business',
-    route: '/condominio'
-  },
-  {
-    title: 'Cadastros',
-    icon: 'app_registration',
-    route: '/cadastros',
-    children: [
-      {
-        title: 'Condomínio',
-        icon: 'business',
-        route: '/condominio'
-      },
-      {
-        title: 'Categorias',
-        icon: 'category',
-        route: '/cadastros/categorias',
-        subChildren: [
-          { title: 'Ocorrência', icon: 'warning', route: '/cadastros/categorias/ocorrencia' },
-          { title: 'Anúncio', icon: 'campaign', route: '/cadastros/categorias/anuncio' }
-        ]
-      },
-      {
-        title: 'Pessoas',
-        icon: 'people',
-        route: '/cadastros/pessoas',
-        subChildren: [
-          { title: 'Proprietário', icon: 'home', route: '/cadastros/pessoas/proprietario' },
-          { title: 'Inquilino', icon: 'person', route: '/cadastros/pessoas/inquilino' },
-          { title: 'Visitante', icon: 'person_add', route: '/cadastros/pessoas/visitante' },
-          { title: 'Síndico', icon: 'supervisor_account', route: '/cadastros/pessoas/sindico' },
-          { title: 'Sub síndico', icon: 'account_circle', route: '/cadastros/pessoas/subsindico' },
-          { title: 'Funcionário', icon: 'badge', route: '/cadastros/pessoas/funcionario' },
-          { title: 'Dependente', icon: 'family_restroom', route: '/cadastros/pessoas/dependente' }
-        ]
-      }
-    ]
-  },
-  {
-    title: 'Registros',
-    icon: 'description',
-    route: '/registros',
-    children: [
-      { title: 'Achados e perdidos', icon: 'find_in_page', route: '/registros/achados-perdidos' },
-      { title: 'Anúncio', icon: 'campaign', route: '/registros/anuncio' },
-      { title: 'Ocorrência', icon: 'report_problem', route: '/registros/ocorrencia' },
-      { title: 'Notícia', icon: 'article', route: '/registros/noticia' },
-      { title: 'Encomenda', icon: 'local_shipping', route: '/registros/encomenda' },
-      { title: 'Arquivo', icon: 'folder', route: '/registros/arquivo' },
-      { title: 'Documentos', icon: 'insert_drive_file', route: '/registros/documentos' }
-    ]
-  },
-  {
-    title: 'Visões',
-    icon: 'visibility',
-    route: '/visoes',
-    children: [
-      { title: 'Administrativa', icon: 'admin_panel_settings', route: '/visoes/administrativa' },
-      { title: 'Síndico', icon: 'supervisor_account', route: '/visoes/sindico' },
-      { title: 'Sub síndico', icon: 'account_circle', route: '/visoes/subsindico' }
-    ]
-  },
-  {
-    title: 'Solicitações',
-    icon: 'request_page',
-    route: '/solicitacoes',
-    children: [
-      { title: 'Reserva', icon: 'event', route: '/solicitacoes/reserva' }
-    ]
-  },
-  {
-    title: 'Chat',
-    icon: 'chat',
-    route: '/chat'
-  },
-  {
-    title: 'Contacts',
-    icon: 'contacts',
-    route: '/contacts'
-  },
-  {
-    title: 'Email',
-    icon: 'email',
-    route: '/email',
-    children: [
-      { title: 'Email Inbox', icon: 'inbox', route: '/email/inbox' },
-      { title: 'Email Details', icon: 'mail', route: '/email/details' },
-      { title: 'Email Compose', icon: 'edit', route: '/email/compose' },
-      { title: 'Badge', icon: 'badge', route: '/email/badge' }
-    ]
-  },
+    {
+      title: 'Configurações e Cadastros Base',
+      icon: 'settings',
+      route: '/config',
+      children: [
+        {
+          title: 'Plano de Contas',
+          icon: 'list_alt',
+          route: '/config/plano-contas'
+        },
+        {
+          title: 'Taxas e Tarifas',
+          icon: 'request_quote',
+          route: '/config/taxas'
+        },
+        {
+          title: 'Cadastro de Fornecedores',
+          icon: 'store',
+          route: '/config/fornecedores'
+        },
+        {
+          title: 'Talões de Cheques',
+          icon: 'receipt_long',
+          route: '/config/cheques'
+        }
+      ]
+    },
+    {
+      title: 'Gestão de Recebimentos e Rateio',
+      icon: 'receipt_long',
+      route: '/rateio',
+      children: [
+        {
+          title: 'Rateio Mensal',
+          icon: 'event_note',
+          route: '/rateio/mensal'
+        },
+        {
+          title: 'Programação de Rateio',
+          icon: 'date_range',
+          route: '/rateio/programacao'
+        },
+        {
+          title: 'Rateio Avulso e Baixa Manual',
+          icon: 'edit_note',
+          route: '/rateio/avulso'
+        }
+      ]
+    },
+    {
+      title: 'Contas a Pagar e Desembolsos',
+      icon: 'payment',
+      route: '/pagar',
+      children: [
+        {
+          title: 'Contas a Pagar (Principal)',
+          icon: 'account_balance_wallet',
+          route: '/pagar/principal'
+        },
+        {
+          title: 'Baixas e Cancelamentos',
+          icon: 'cancel',
+          route: '/pagar/baixas'
+        },
+        {
+          title: 'Relatórios Financeiros',
+          icon: 'bar_chart',
+          route: '/pagar/relatorios'
+        }
+      ]
+    },
+    {
+      title: 'Conciliação Bancária',
+      icon: 'account_balance',
+      route: '/conciliacao',
+      children: [
+        {
+          title: 'Parametrização',
+          icon: 'tune',
+          route: '/conciliacao/parametros'
+        },
+        {
+          title: 'Processamento de Arquivos',
+          icon: 'file_upload',
+          route: '/conciliacao/arquivos'
+        },
+        {
+          title: 'Relatórios da Conciliação',
+          icon: 'assessment',
+          route: '/conciliacao/relatorios'
+        }
+      ]
+    },
+    {
+      title: 'Controle de Serviços e Tarifas',
+      icon: 'work',
+      route: '/servicos',
+      children: [
+        {
+          title: 'Gestão de Serviços',
+          icon: 'engineering',
+          route: '/servicos/gestao'
+        },
+        {
+          title: 'Geração de Cobranças',
+          icon: 'request_page',
+          route: '/servicos/cobranca'
+        },
+        {
+          title: 'Repasse e Impressão',
+          icon: 'print',
+          route: '/servicos/repasses'
+        }
+      ]
+    },
+    {
+      title: 'Cobrança de Inadimplência',
+      icon: 'gavel',
+      route: '/cobranca',
+      children: [
+        {
+          title: 'Cobrança Geral',
+          icon: 'summarize',
+          route: '/cobranca/geral'
+        },
+        {
+          title: 'Gestão de Acordos',
+          icon: 'handshake',
+          route: '/cobranca/acordos'
+        },
+        {
+          title: 'Carta de Cobrança',
+          icon: 'mail',
+          route: '/cobranca/cartas'
+        }
+      ]
+    },
+    {
+      title: 'Orçamento',
+      icon: 'trending_up',
+      route: '/orcamento',
+      children: [
+        {
+          title: 'Previsão Orçamentária',
+          icon: 'calculate',
+          route: '/orcamento/previsao'
+        },
+        {
+          title: 'Manutenção de Valores',
+          icon: 'tune',
+          route: '/orcamento/manutencao'
+        },
+        {
+          title: 'Impressão de Relatórios',
+          icon: 'print',
+          route: '/orcamento/relatorios'
+        }
+      ]
+    },
+    {
+      title: 'Fechamento e Prestação de Contas',
+      icon: 'folder_shared',
+      route: '/fechamento',
+      children: [
+        {
+          title: 'Fechamento de Contas',
+          icon: 'assignment_turned_in',
+          route: '/fechamento/processamento'
+        },
+        {
+          title: 'Pasta Digital',
+          icon: 'folder',
+          route: '/fechamento/pasta'
+        }
+      ]
+    },
+    {
+      title: 'Condomínio',
+      icon: 'business',
+      route: '/condominio'
+    },
+    {
+      title: 'Cadastros',
+      icon: 'app_registration',
+      route: '/cadastros',
+      children: [
+        {
+          title: 'Categorias',
+          icon: 'category',
+          route: '/cadastros/categorias',
+          subChildren: [
+            { title: 'Ocorrência', icon: 'warning', route: '/cadastros/categorias/ocorrencia' },
+            { title: 'Anúncio', icon: 'campaign', route: '/cadastros/categorias/anuncio' }
+          ]
+        },
+        {
+          title: 'Pessoas',
+          icon: 'people',
+          route: '/cadastros/pessoas',
+          subChildren: [
+            { title: 'Proprietário', icon: 'home', route: '/cadastros/pessoas/proprietario' },
+            { title: 'Inquilino', icon: 'person', route: '/cadastros/pessoas/inquilino' },
+            { title: 'Visitante', icon: 'person_add', route: '/cadastros/pessoas/visitante' },
+            { title: 'Síndico', icon: 'supervisor_account', route: '/cadastros/pessoas/sindico' },
+            { title: 'Sub síndico', icon: 'account_circle', route: '/cadastros/pessoas/subsindico' },
+            { title: 'Funcionário', icon: 'badge', route: '/cadastros/pessoas/funcionario' },
+            { title: 'Dependente', icon: 'family_restroom', route: '/cadastros/pessoas/dependente' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Registros',
+      icon: 'description',
+      route: '/registros',
+      children: [
+        { title: 'Achados e perdidos', icon: 'find_in_page', route: '/registros/achados-perdidos' },
+        { title: 'Anúncio', icon: 'campaign', route: '/registros/anuncio' },
+        { title: 'Ocorrência', icon: 'report_problem', route: '/registros/ocorrencia' },
+        { title: 'Notícia', icon: 'article', route: '/registros/noticia' },
+        { title: 'Encomenda', icon: 'local_shipping', route: '/registros/encomenda' },
+        { title: 'Arquivo', icon: 'folder', route: '/registros/arquivo' },
+        { title: 'Documentos', icon: 'insert_drive_file', route: '/registros/documentos' }
+      ]
+    },
+    {
+      title: 'Visões',
+      icon: 'visibility',
+      route: '/visoes',
+      children: [
+        { title: 'Administrativa', icon: 'admin_panel_settings', route: '/visoes/administrativa' },
+        { title: 'Síndico', icon: 'supervisor_account', route: '/visoes/sindico' },
+        { title: 'Sub síndico', icon: 'account_circle', route: '/visoes/subsindico' }
+      ]
+    },
+    {
+      title: 'Solicitações',
+      icon: 'request_page',
+      route: '/solicitacoes',
+      children: [
+        { title: 'Reserva', icon: 'event', route: '/solicitacoes/reserva' }
+      ]
+    },
+    {
+      title: 'Chat',
+      icon: 'chat',
+      route: '/chat'
+    },
+    {
+      title: 'Contacts',
+      icon: 'contacts',
+      route: '/contacts'
+    },
+    {
+      title: 'Email',
+      icon: 'email',
+      route: '/email',
+      children: [
+        { title: 'Email Inbox', icon: 'inbox', route: '/email/inbox' },
+        { title: 'Email Details', icon: 'mail', route: '/email/details' },
+        { title: 'Email Compose', icon: 'edit', route: '/email/compose' },
+        { title: 'Badge', icon: 'badge', route: '/email/badge' }
+      ]
+    },
+    {
+      title: 'Sair',
+      icon: 'exit_to_app',
+      route: '/logout'
+    },
 
-  // --- Seção Financeira / Administrativa ---
-  {
-    title: 'Configurações e Cadastros Base',
-    icon: 'settings',
-    route: '/config',
-    children: [
-      { title: 'Plano de Contas', icon: 'list_alt', route: '/config/plano-contas' },
-      { title: 'Taxas e Tarifas', icon: 'request_quote', route: '/config/taxas' },
-      { title: 'Cadastro de Fornecedores', icon: 'store', route: '/config/fornecedores' },
-      { title: 'Talões de Cheques', icon: 'receipt_long', route: '/config/cheques' }
-    ]
-  },
-  {
-    title: 'Gestão de Recebimentos e Rateio',
-    icon: 'receipt_long',
-    route: '/rateio',
-    children: [
-      { title: 'Rateio Mensal', icon: 'event_note', route: '/rateio/mensal' },
-      { title: 'Programação de Rateio', icon: 'date_range', route: '/rateio/programacao' },
-      { title: 'Rateio Avulso e Baixa Manual', icon: 'edit_note', route: '/rateio/avulso' }
-    ]
-  },
-  {
-    title: 'Contas a Pagar e Desembolsos',
-    icon: 'payment',
-    route: '/pagar',
-    children: [
-      { title: 'Contas a Pagar (Principal)', icon: 'account_balance_wallet', route: '/pagar/principal' },
-      { title: 'Baixas e Cancelamentos', icon: 'cancel', route: '/pagar/baixas' },
-      { title: 'Relatórios Financeiros', icon: 'bar_chart', route: '/pagar/relatorios' }
-    ]
-  },
-  {
-    title: 'Conciliação Bancária',
-    icon: 'account_balance',
-    route: '/conciliacao',
-    children: [
-      { title: 'Parametrização', icon: 'tune', route: '/conciliacao/parametros' },
-      { title: 'Processamento de Arquivos', icon: 'file_upload', route: '/conciliacao/arquivos' },
-      { title: 'Relatórios da Conciliação', icon: 'assessment', route: '/conciliacao/relatorios' }
-    ]
-  },
-  {
-    title: 'Controle de Serviços e Tarifas',
-    icon: 'work',
-    route: '/servicos',
-    children: [
-      { title: 'Gestão de Serviços', icon: 'engineering', route: '/servicos/gestao' },
-      { title: 'Geração de Cobranças', icon: 'request_page', route: '/servicos/cobranca' },
-      { title: 'Repasse e Impressão', icon: 'print', route: '/servicos/repasses' }
-    ]
-  },
-  {
-    title: 'Cobrança de Inadimplência',
-    icon: 'gavel',
-    route: '/cobranca',
-    children: [
-      { title: 'Cobrança Geral', icon: 'summarize', route: '/cobranca/geral' },
-      { title: 'Gestão de Acordos', icon: 'handshake', route: '/cobranca/acordos' },
-      { title: 'Carta de Cobrança', icon: 'mail', route: '/cobranca/cartas' }
-    ]
-  },
-  {
-    title: 'Orçamento',
-    icon: 'trending_up',
-    route: '/orcamento',
-    children: [
-      { title: 'Previsão Orçamentária', icon: 'calculate', route: '/orcamento/previsao' },
-      { title: 'Manutenção de Valores', icon: 'tune', route: '/orcamento/manutencao' },
-      { title: 'Impressão de Relatórios', icon: 'print', route: '/orcamento/relatorios' }
-    ]
-  },
-  {
-    title: 'Fechamento e Prestação de Contas',
-    icon: 'folder_shared',
-    route: '/fechamento',
-    children: [
-      { title: 'Fechamento de Contas', icon: 'assignment_turned_in', route: '/fechamento/processamento' },
-      { title: 'Pasta Digital', icon: 'folder', route: '/fechamento/pasta' }
-    ]
-  },
+    // --- Seção principal do sistema ---
+    {
+      title: 'Condomínio',
+      icon: 'business',
+      route: '/condominio'
+    },
+    {
+      title: 'Cadastros',
+      icon: 'app_registration',
+      route: '/cadastros',
+      children: [
+        {
+          title: 'Condomínio',
+          icon: 'business',
+          route: '/condominio'
+        },
+        {
+          title: 'Categorias',
+          icon: 'category',
+          route: '/cadastros/categorias',
+          subChildren: [
+            { title: 'Ocorrência', icon: 'warning', route: '/cadastros/categorias/ocorrencia' },
+            { title: 'Anúncio', icon: 'campaign', route: '/cadastros/categorias/anuncio' }
+          ]
+        },
+        {
+          title: 'Pessoas',
+          icon: 'people',
+          route: '/cadastros/pessoas',
+          subChildren: [
+            { title: 'Proprietário', icon: 'home', route: '/cadastros/pessoas/proprietario' },
+            { title: 'Inquilino', icon: 'person', route: '/cadastros/pessoas/inquilino' },
+            { title: 'Visitante', icon: 'person_add', route: '/cadastros/pessoas/visitante' },
+            { title: 'Síndico', icon: 'supervisor_account', route: '/cadastros/pessoas/sindico' },
+            { title: 'Sub síndico', icon: 'account_circle', route: '/cadastros/pessoas/subsindico' },
+            { title: 'Funcionário', icon: 'badge', route: '/cadastros/pessoas/funcionario' },
+            { title: 'Dependente', icon: 'family_restroom', route: '/cadastros/pessoas/dependente' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Registros',
+      icon: 'description',
+      route: '/registros',
+      children: [
+        { title: 'Achados e perdidos', icon: 'find_in_page', route: '/registros/achados-perdidos' },
+        { title: 'Anúncio', icon: 'campaign', route: '/registros/anuncio' },
+        { title: 'Ocorrência', icon: 'report_problem', route: '/registros/ocorrencia' },
+        { title: 'Notícia', icon: 'article', route: '/registros/noticia' },
+        { title: 'Encomenda', icon: 'local_shipping', route: '/registros/encomenda' },
+        { title: 'Arquivo', icon: 'folder', route: '/registros/arquivo' },
+        { title: 'Documentos', icon: 'insert_drive_file', route: '/registros/documentos' }
+      ]
+    },
+    {
+      title: 'Visões',
+      icon: 'visibility',
+      route: '/visoes',
+      children: [
+        { title: 'Administrativa', icon: 'admin_panel_settings', route: '/visoes/administrativa' },
+        { title: 'Síndico', icon: 'supervisor_account', route: '/visoes/sindico' },
+        { title: 'Sub síndico', icon: 'account_circle', route: '/visoes/subsindico' }
+      ]
+    },
+    {
+      title: 'Solicitações',
+      icon: 'request_page',
+      route: '/solicitacoes',
+      children: [
+        { title: 'Reserva', icon: 'event', route: '/solicitacoes/reserva' }
+      ]
+    },
+    {
+      title: 'Chat',
+      icon: 'chat',
+      route: '/chat'
+    },
+    {
+      title: 'Contacts',
+      icon: 'contacts',
+      route: '/contacts'
+    },
+    {
+      title: 'Email',
+      icon: 'email',
+      route: '/email',
+      children: [
+        { title: 'Email Inbox', icon: 'inbox', route: '/email/inbox' },
+        { title: 'Email Details', icon: 'mail', route: '/email/details' },
+        { title: 'Email Compose', icon: 'edit', route: '/email/compose' },
+        { title: 'Badge', icon: 'badge', route: '/email/badge' }
+      ]
+    },
 
-  // --- Sair ---
-  {
-    title: 'Sair',
-    icon: 'exit_to_app',
-    route: '/logout'
-  }
-];
+    // --- Seção Financeira / Administrativa ---
+    {
+      title: 'Configurações e Cadastros Base',
+      icon: 'settings',
+      route: '/config',
+      children: [
+        { title: 'Plano de Contas', icon: 'list_alt', route: '/config/plano-contas' },
+        { title: 'Taxas e Tarifas', icon: 'request_quote', route: '/config/taxas' },
+        { title: 'Cadastro de Fornecedores', icon: 'store', route: '/config/fornecedores' },
+        { title: 'Talões de Cheques', icon: 'receipt_long', route: '/config/cheques' }
+      ]
+    },
+    {
+      title: 'Gestão de Recebimentos e Rateio',
+      icon: 'receipt_long',
+      route: '/rateio',
+      children: [
+        { title: 'Rateio Mensal', icon: 'event_note', route: '/rateio/mensal' },
+        { title: 'Programação de Rateio', icon: 'date_range', route: '/rateio/programacao' },
+        { title: 'Rateio Avulso e Baixa Manual', icon: 'edit_note', route: '/rateio/avulso' }
+      ]
+    },
+    {
+      title: 'Contas a Pagar e Desembolsos',
+      icon: 'payment',
+      route: '/pagar',
+      children: [
+        { title: 'Contas a Pagar (Principal)', icon: 'account_balance_wallet', route: '/pagar/principal' },
+        { title: 'Baixas e Cancelamentos', icon: 'cancel', route: '/pagar/baixas' },
+        { title: 'Relatórios Financeiros', icon: 'bar_chart', route: '/pagar/relatorios' }
+      ]
+    },
+    {
+      title: 'Conciliação Bancária',
+      icon: 'account_balance',
+      route: '/conciliacao',
+      children: [
+        { title: 'Parametrização', icon: 'tune', route: '/conciliacao/parametros' },
+        { title: 'Processamento de Arquivos', icon: 'file_upload', route: '/conciliacao/arquivos' },
+        { title: 'Relatórios da Conciliação', icon: 'assessment', route: '/conciliacao/relatorios' }
+      ]
+    },
+    {
+      title: 'Controle de Serviços e Tarifas',
+      icon: 'work',
+      route: '/servicos',
+      children: [
+        { title: 'Gestão de Serviços', icon: 'engineering', route: '/servicos/gestao' },
+        { title: 'Geração de Cobranças', icon: 'request_page', route: '/servicos/cobranca' },
+        { title: 'Repasse e Impressão', icon: 'print', route: '/servicos/repasses' }
+      ]
+    },
+    {
+      title: 'Cobrança de Inadimplência',
+      icon: 'gavel',
+      route: '/cobranca',
+      children: [
+        { title: 'Cobrança Geral', icon: 'summarize', route: '/cobranca/geral' },
+        { title: 'Gestão de Acordos', icon: 'handshake', route: '/cobranca/acordos' },
+        { title: 'Carta de Cobrança', icon: 'mail', route: '/cobranca/cartas' }
+      ]
+    },
+    {
+      title: 'Orçamento',
+      icon: 'trending_up',
+      route: '/orcamento',
+      children: [
+        { title: 'Previsão Orçamentária', icon: 'calculate', route: '/orcamento/previsao' },
+        { title: 'Manutenção de Valores', icon: 'tune', route: '/orcamento/manutencao' },
+        { title: 'Impressão de Relatórios', icon: 'print', route: '/orcamento/relatorios' }
+      ]
+    },
+    {
+      title: 'Fechamento e Prestação de Contas',
+      icon: 'folder_shared',
+      route: '/fechamento',
+      children: [
+        { title: 'Fechamento de Contas', icon: 'assignment_turned_in', route: '/fechamento/processamento' },
+        { title: 'Pasta Digital', icon: 'folder', route: '/fechamento/pasta' }
+      ]
+    },
 
+    // --- Sair ---
+    {
+      title: 'Sair',
+      icon: 'exit_to_app',
+      route: '/logout'
+    }
+  ];
 }
