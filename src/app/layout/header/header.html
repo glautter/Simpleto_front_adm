@@ -1,38 +1,20 @@
-<!-- <mat-toolbar class="gb-topbar" color="primary">
-  <div class="gb-topbar__left">
-    <button mat-icon-button class="gb-menu-btn" (click)="onToggleSidenav()" aria-label="Abrir menu">
-      <mat-icon *ngIf="!(isMobile && isSidenavOpen)">menu</mat-icon>
-      <mat-icon *ngIf="isMobile && isSidenavOpen"><i class="fas fa-times" aria-hidden="true"></i></mat-icon>
-    </button>
-    <div class="header-logo"><a href="https://www.gov.br/"><img src="/assets/img/govbr-logo.png" alt="logo"></a></div>
-  </div>
-
-  <div class="gb-topbar__center">
-    <div class="gb-brand">
-      <div class="gb-brand__texts">
-        <a class="gb-brand__title" routerLink="/" tabindex="0">Sistema de Anatomia Patológica</a>
-        <span class="gb-brand__subtitle">Sistema</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="gb-topbar__right">
-    <div class="gb-search">
-      <mat-icon>search</mat-icon>
-      <input placeholder="O que você procura?" />
-    </div>
-    <div class="gb-actions">
-      <button mat-icon-button aria-label="Notificações"><mat-icon>notifications</mat-icon></button>
-      <button mat-icon-button aria-label="Perfil"><mat-icon>account_circle</mat-icon></button>
-    </div>
-  </div>
-
-</mat-toolbar> -->
-
-<main class="home-container">
+<!-- <main class="home-container">
   <mat-toolbar color="primary" class="navbar">
     <div class="container">
       <span class="logo" aria-label="Logo Simpleto Adm"></span>
     </div>
   </mat-toolbar>
-</main>
+</main> -->
+
+<mat-toolbar color="primary" class="navbar">
+  <div class="navbar-content">
+    <div class="logo" aria-label="Logo Simpleto Adm"></div>
+
+    <div class="menu" *ngIf="!isMobile">
+      <button mat-button>Início</button>
+      <button mat-button>Sobre</button>
+      <button mat-button>Contato</button>
+      <button mat-raised-button color="accent" class="btn-primary">Acesso ao Sistema</button>
+    </div>
+  </div>
+</mat-toolbar>

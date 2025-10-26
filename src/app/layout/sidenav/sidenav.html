@@ -16,56 +16,58 @@
       </button>
 
       <!-- CHILDREN (Nível 1) -->
-      <ul *ngIf="expandedItem === item.title" class="gb-sidenav__submenu">
-        <li *ngFor="let child of item.children" [class.active]="activeChild === child.title">
-          
-          <!-- Child SEM subChildren - Link direto -->
-          <a 
-            *ngIf="!child.subChildren"
-            [routerLink]="child.route || item.route" 
-            class="gb-sidenav__submenu-link" 
-            [matTooltip]="collapsed ? child.title : ''" 
-            matTooltipPosition="right" 
-            [attr.aria-current]="activeChild === child.title ? 'page' : null">
-            <mat-icon class="gb-sidenav__icon">{{ child.icon }}</mat-icon>
-            <span class="gb-sidenav__title" [class.hidden]="collapsed">{{ child.title }}</span>
-          </a>
+      @if (expandedItem === item.title) {
+        <ul class="gb-sidenav__submenu">
+          <li *ngFor="let child of item.children" [class.active]="activeChild === child.title">
+            
+            <!-- Child SEM subChildren - Link direto -->
+            <a 
+              *ngIf="!child.subChildren"
+              [routerLink]="child.route || item.route" 
+              class="gb-sidenav__submenu-link" 
+              [matTooltip]="collapsed ? child.title : ''" 
+              matTooltipPosition="right" 
+              [attr.aria-current]="activeChild === child.title ? 'page' : null">
+              <mat-icon class="gb-sidenav__icon">{{ child.icon }}</mat-icon>
+              <span class="gb-sidenav__title" [class.hidden]="collapsed">{{ child.title }}</span>
+            </a>
 
-          <!-- Child COM subChildren - Botão expansível -->
-          <button 
-            *ngIf="child.subChildren"
-            class="gb-sidenav__submenu-link gb-sidenav__submenu-button" 
-            (click)="toggleExpandChild(item.title, child.title)"
-            [class.active]="activeChild === child.title"
-            [matTooltip]="collapsed ? child.title : ''" 
-            matTooltipPosition="right">
-            <mat-icon class="gb-sidenav__icon">{{ child.icon }}</mat-icon>
-            <span class="gb-sidenav__title" [class.hidden]="collapsed">{{ child.title }}</span>
-            <mat-icon class="gb-sidenav__chev" *ngIf="!collapsed">
-              {{ isChildExpanded(item.title, child.title) ? 'expand_less' : 'expand_more' }}
-            </mat-icon>
-          </button>
+            <!-- Child COM subChildren - Botão expansível -->
+            <button 
+              *ngIf="child.subChildren"
+              class="gb-sidenav__submenu-link gb-sidenav__submenu-button" 
+              (click)="toggleExpandChild(item.title, child.title)"
+              [class.active]="activeChild === child.title"
+              [matTooltip]="collapsed ? child.title : ''" 
+              matTooltipPosition="right">
+              <mat-icon class="gb-sidenav__icon">{{ child.icon }}</mat-icon>
+              <span class="gb-sidenav__title" [class.hidden]="collapsed">{{ child.title }}</span>
+              <mat-icon class="gb-sidenav__chev" *ngIf="!collapsed">
+                {{ isChildExpanded(item.title, child.title) ? 'expand_less' : 'expand_more' }}
+              </mat-icon>
+            </button>
 
-          <!-- SUB-CHILDREN (Nível 2) -->
-          <ul 
-            *ngIf="child.subChildren && isChildExpanded(item.title, child.title)" 
-            class="gb-sidenav__subsubmenu">
-            <li *ngFor="let subChild of child.subChildren" [class.active]="activeSubChild === subChild.title">
-              <a 
-                [routerLink]="subChild.route" 
-                class="gb-sidenav__submenu-link gb-sidenav__subchild-link" 
-                [matTooltip]="collapsed ? subChild.title : ''" 
-                matTooltipPosition="right"
-                [attr.aria-current]="activeSubChild === subChild.title ? 'page' : null">
-                <mat-icon class="gb-sidenav__icon" *ngIf="subChild.icon">{{ subChild.icon }}</mat-icon>
-                <span class="gb-sidenav__icon-placeholder" *ngIf="!subChild.icon"></span>
-                <span class="gb-sidenav__title" [class.hidden]="collapsed">{{ subChild.title }}</span>
-              </a>
-            </li>
-          </ul>
+            <!-- SUB-CHILDREN (Nível 2) -->
+            <ul 
+              *ngIf="child.subChildren && isChildExpanded(item.title, child.title)" 
+              class="gb-sidenav__subsubmenu">
+              <li *ngFor="let subChild of child.subChildren" [class.active]="activeSubChild === subChild.title">
+                <a 
+                  [routerLink]="subChild.route" 
+                  class="gb-sidenav__submenu-link gb-sidenav__subchild-link" 
+                  [matTooltip]="collapsed ? subChild.title : ''" 
+                  matTooltipPosition="right"
+                  [attr.aria-current]="activeSubChild === subChild.title ? 'page' : null">
+                  <mat-icon class="gb-sidenav__icon" *ngIf="subChild.icon">{{ subChild.icon }}</mat-icon>
+                  <span class="gb-sidenav__icon-placeholder" *ngIf="!subChild.icon"></span>
+                  <span class="gb-sidenav__title" [class.hidden]="collapsed">{{ subChild.title }}</span>
+                </a>
+              </li>
+            </ul>
 
-        </li>
-      </ul>
+          </li>
+        </ul>
+      }
     </li>
   </ul>
 </nav>
