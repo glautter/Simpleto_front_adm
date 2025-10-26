@@ -11,7 +11,7 @@ import { FormField } from '../models/form-field/form-field.model';
   standalone: true,
   imports: [CommonModule, CrudFormComponent, ReactiveFormsModule],
   templateUrl: './crud-tabs-form.component.html',
-  styleUrls: ['./crud-tabs-form.component.scss']
+  styleUrls: ['./../base-css/base.component.scss']
 })
 export class CrudTabsFormComponent implements OnChanges {
   @Input() config: CrudTabsConfig = { tabs: [] };
@@ -28,7 +28,7 @@ export class CrudTabsFormComponent implements OnChanges {
   currentFields: FormField[] = [];
   allFormData: any = {};
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['config'] && this.config?.tabs?.length > 0) {
@@ -38,7 +38,7 @@ export class CrudTabsFormComponent implements OnChanges {
       }
       this.loadTab(this.activeTabId);
     }
-    
+
     if (changes['initialData']) {
       this.allFormData = { ...this.initialData };
     }
@@ -46,10 +46,10 @@ export class CrudTabsFormComponent implements OnChanges {
 
   selectTab(tabId: string) {
     if (this.activeTabId === tabId) return;
-    
+
     // Salva dados da aba atual antes de trocar
     this.saveCurrentTabData();
-    
+
     this.activeTabId = tabId;
     this.loadTab(tabId);
     this.tabChange.emit(tabId);
@@ -58,7 +58,7 @@ export class CrudTabsFormComponent implements OnChanges {
   private loadTab(tabId: string) {
     const tab = this.config.tabs.find(t => t.id === tabId);
     if (!tab) return;
-    
+
     this.currentFields = tab.fields;
   }
 
@@ -80,18 +80,18 @@ export class CrudTabsFormComponent implements OnChanges {
       this.crudForm.form.markAllAsTouched();
       return;
     }
-    
+
     // Salva dados da aba atual
     this.saveCurrentTabData();
-    
+
     // Valida todas as abas
     const isValid = this.validateAllTabs();
-    
+
     if (!isValid) {
       alert('Por favor, preencha todos os campos obrigatórios em todas as abas.');
       return;
     }
-    
+
     this.save.emit(this.allFormData);
   }
 
