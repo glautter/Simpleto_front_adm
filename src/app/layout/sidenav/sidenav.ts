@@ -132,7 +132,7 @@ export class SidenavComponent {
           title: 'Plano de Contas',
           icon: 'list_alt',
           //          route: '/config/plano-contas'
-          route: '/pacientes'
+          route: '/administracao-home/pacientes'
         },
         {
           title: 'Taxas e Tarifas',
