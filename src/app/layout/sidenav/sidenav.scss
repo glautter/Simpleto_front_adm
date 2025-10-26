@@ -4,6 +4,44 @@ $verde: #01586d;
 $amarelo: #ffdd57;
 $cinza-claro: #f4f4f4;
 
+/* Tons derivados do verde base */
+$verde-principal: $verde; // menu principal
+$verde-medio: color.scale($verde, $lightness: 10%); // submenus
+$verde-claro: color.scale($verde, $lightness: 20%); // sub-submenus
+
+/* ========== SIDENAV BASE ========== */
+.gb-sidenav {
+  background: $verde-principal;
+  color: #fff;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE/Edge
+  &::-webkit-scrollbar {
+    display: none; // Chrome/Safari
+  }
+}
+
+/* Remove sublinhados globais */
+.gb-sidenav a,
+.gb-sidenav__submenu-link,
+.gb-sidenav__subsubmenu a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.gb-sidenav a:hover,
+.gb-sidenav__submenu-link:hover,
+.gb-sidenav__subsubmenu a:hover {
+  text-decoration: none !important;
+}
+
+/* ========== LISTAS ========== */
 .gb-sidenav__list,
 .gb-sidenav__submenu,
 .gb-sidenav__subsubmenu {
@@ -12,7 +50,7 @@ $cinza-claro: #f4f4f4;
   margin: 0;
 }
 
-/* Itens principais */
+/* ========== ITENS PRINCIPAIS (nível 1) ========== */
 .gb-sidenav__item {
   display: block;
   width: 100%;
@@ -32,12 +70,12 @@ $cinza-claro: #f4f4f4;
   transition: background 0.2s ease, color 0.2s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: color.scale($verde-principal, $lightness: 20%);
     color: $amarelo;
   }
 
   .gb-sidenav__icon {
-    font-size: 22px;  
+    font-size: 22px;
     margin-right: 10px;
     flex-shrink: 0;
   }
@@ -55,65 +93,49 @@ $cinza-claro: #f4f4f4;
   }
 }
 
-/* Ativo */
+/* Ativo (nível 1) */
 .gb-sidenav__item.active > .gb-sidenav__button {
-  background: rgba(0, 0, 0, 0.25);
+  background: color.scale($verde-principal, $lightness: 15%);
   border-left: 4px solid $amarelo;
   color: $amarelo;
 }
 
-/* Submenus */
+/* ========== SUBMENUS (nível 2) ========== */
 .gb-sidenav__submenu {
-  background: rgba(0, 0, 0, 0.15);
+  background: $verde-medio;
 }
 
 .gb-sidenav__submenu-link {
   padding-left: 40px;
+
+  &:hover {
+    background: color.scale($verde-medio, $lightness: 15%);
+    color: $amarelo;
+  }
 }
 
 .gb-sidenav__submenu li.active > .gb-sidenav__submenu-link {
-  background: rgba(0, 0, 0, 0.3);
+  background: color.scale($verde-medio, $lightness: 10%);
   border-left: 3px solid $amarelo;
   color: $amarelo;
 }
 
-/* Sub-submenu */
+/* ========== SUB-SUBMENUS (nível 3) ========== */
 .gb-sidenav__subsubmenu {
-  background: rgba(0, 0, 0, 0.25);
+  background: $verde-claro;
 }
 
 .gb-sidenav__subsubmenu li a {
   padding-left: 60px;
-}
 
-.gb-sidenav {
-  background: $verde;
-  color: #fff;
-  height: 100%;
-  overflow-y: auto; // ✅ scroll só quando realmente for necessário
-  overflow-x: hidden;
-  padding: 0;
-  margin: 0;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-
-  /* remove scroll visual (todas as engines) */
-  scrollbar-width: none;         // Firefox
-  -ms-overflow-style: none;      // IE / Edge
-  &::-webkit-scrollbar {
-    display: none;               // Chrome, Safari
+  &:hover {
+    background: color.scale($verde-claro, $lightness: 15%);
+    color: $amarelo;
   }
 }
 
-/* Remove sublinhado de todos os links do sidenav */
-.gb-sidenav a,
-.gb-sidenav__submenu-link,
-.gb-sidenav__subsubmenu a {
-  text-decoration: none !important;
-  color: inherit;
-}
-
-.gb-sidenav a:hover,
-.gb-sidenav__submenu-link:hover,
-.gb-sidenav__subsubmenu a:hover {
-  text-decoration: none !important;
+.gb-sidenav__subsubmenu li.active > a {
+  background: color.scale($verde-claro, $lightness: 10%);
+  border-left: 2px solid $amarelo;
+  color: $amarelo;
 }
