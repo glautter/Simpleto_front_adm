@@ -1,28 +1,60 @@
-.layout-container {
-  display: flex;
-  height: calc(100vh - 64px); // o sidenav e conteúdo ficam abaixo do header
-  margin-top: 64px; // desloca o sidenav pra não ficar por baixo do header
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden; // evita scroll global
 }
 
+/* Container principal */
+.layout-container {
+  display: flex;
+  height: 100%; // ocupa 100% da viewport (sem calc)
+  margin-top: 64px; // compensa o header fixo
+}
+
+/* Sidenav */
 mat-sidenav {
-  background-color: #01586d; // mantém verde do header
+  background-color: #01586d;
   color: white;
   border: none;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  /* remove scroll quando não precisa */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  overflow: hidden; // sem rolagem interna
+  height: calc(100vh - 64px); // respeita o header
 }
 
+/* Conteúdo principal */
 mat-sidenav-content {
   background-color: #f5f5f5;
-  height: 100%;
+  height: calc(100vh - 64px);
   overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
 }
+
+/* Main do conteúdo */
+.main-content {
+  min-height: calc(100vh - 64px);
+  overflow-x: hidden;
+}
+
+// .layout-container {
+//   display: flex;
+//   height: calc(100vh - 64px); // o sidenav e conteúdo ficam abaixo do header
+//   margin-top: 64px; // desloca o sidenav pra não ficar por baixo do header
+// }
+
+// mat-sidenav {
+//   background-color: #01586d;
+//   color: white;
+//   border: none;
+//   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+//   height: 100%;
+//   overflow: hidden;
+// }
+
+// mat-sidenav-content {
+//   background-color: #f5f5f5;
+//   height: 100%;
+//   overflow-y: auto;
+//   padding: 0; 
+// }

@@ -85,3 +85,35 @@ $cinza-claro: #f4f4f4;
 .gb-sidenav__subsubmenu li a {
   padding-left: 60px;
 }
+
+.gb-sidenav {
+  background: $verde;
+  color: #fff;
+  height: 100%;
+  overflow-y: auto; // ✅ scroll só quando realmente for necessário
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+
+  /* remove scroll visual (todas as engines) */
+  scrollbar-width: none;         // Firefox
+  -ms-overflow-style: none;      // IE / Edge
+  &::-webkit-scrollbar {
+    display: none;               // Chrome, Safari
+  }
+}
+
+/* Remove sublinhado de todos os links do sidenav */
+.gb-sidenav a,
+.gb-sidenav__submenu-link,
+.gb-sidenav__subsubmenu a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.gb-sidenav a:hover,
+.gb-sidenav__submenu-link:hover,
+.gb-sidenav__subsubmenu a:hover {
+  text-decoration: none !important;
+}
