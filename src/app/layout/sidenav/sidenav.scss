@@ -1,7 +1,7 @@
 @use 'sass:color';
 
 $verde: #01586d;
-$amarelo: #ffdd57;
+$verde-florescente: #00ffea;
 $cinza-claro: #f4f4f4;
 
 /* Tons derivados do verde base */
@@ -76,7 +76,7 @@ mat-sidenav {
 
   &:hover {
     background: color.scale($verde-principal, $lightness: 20%);
-    color: $amarelo;
+    color: $verde-florescente;
   }
 
   .gb-sidenav__icon {
@@ -101,8 +101,8 @@ mat-sidenav {
 /* Ativo (nível 1) */
 .gb-sidenav__item.active > .gb-sidenav__button {
   background: color.scale($verde-principal, $lightness: 15%);
-  border-left: 4px solid $amarelo;
-  color: $amarelo;
+  border-left: 4px solid $verde-florescente;
+  color: $verde-florescente;
 }
 
 /* ========== SUBMENUS (nível 2) ========== */
@@ -115,14 +115,14 @@ mat-sidenav {
 
   &:hover {
     background: color.scale($verde-medio, $lightness: 15%);
-    color: $amarelo;
+    color: $verde-florescente;
   }
 }
 
 .gb-sidenav__submenu li.active > .gb-sidenav__submenu-link {
   background: color.scale($verde-medio, $lightness: 10%);
-  border-left: 3px solid $amarelo;
-  color: $amarelo;
+  border-left: 3px solid $verde-florescente;
+  color: $verde-florescente;
 }
 
 /* ========== SUB-SUBMENUS (nível 3) ========== */
@@ -135,12 +135,12 @@ mat-sidenav {
 
   &:hover {
     background: color.scale($verde-claro, $lightness: 15%);
-    color: $amarelo;
+    color: $verde-florescente;
   }
 }
 
 .gb-sidenav__subsubmenu li.active > a {
   background: color.scale($verde-claro, $lightness: 10%);
-  border-left: 2px solid $amarelo;
-  color: $amarelo;
+  border-left: 2px solid $verde-florescente;
+  color: $verde-florescente;
 }

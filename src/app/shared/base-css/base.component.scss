@@ -1,7 +1,6 @@
 // Variáveis para manter consistência
 $azul: #01586d;
-$amarelo: #ffdd57;
-$azul-claro: background-color($azul, 50%);
+$azul-claro:  #00ffea;
 $azul-hover: background-color($azul, 5%);
 
 /* ====== CONTAINER PRINCIPAL ====== */
@@ -52,7 +51,7 @@ $azul-hover: background-color($azul, 5%);
 }
 
 .base__search input:focus {
-  border-color: $amarelo;
+  border-color: $azul-claro;
   box-shadow: 0 0 0 3px rgba(255, 221, 87, 0.3);
   outline: none;
 }
@@ -63,8 +62,8 @@ $azul-hover: background-color($azul, 5%);
 
 /* ====== BOTÕES DE AÇÃO ====== */
 .base__actions .btn {
-  background: $amarelo;
-  border: 1px solid background-color($amarelo, 10%);
+  background: $azul-claro;
+  border: 1px solid background-color($azul-claro, 10%);
   color: #000;
   padding: 0.5rem 0.875rem;
   border-radius: 8px;
@@ -75,7 +74,7 @@ $azul-hover: background-color($azul, 5%);
 }
 
 .base__actions .btn:hover {
-  background: background-color($amarelo, 10%);
+  background: background-color($azul-claro, 10%);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -345,7 +344,7 @@ $azul-hover: background-color($azul, 5%);
 // Focus nos campos
 .mat-mdc-form-field.mat-focused {
   .mat-mdc-notch-piece {
-    border-color: $amarelo !important;
+    border-color: $azul-claro !important;
   }
 
   .mat-mdc-form-field-label {
@@ -392,7 +391,7 @@ button {
 }
 
 .base__actions .btn.icon:hover mat-icon {
-  color: $amarelo !important;
+  color: $azul-claro !important;
 }
 
 /* ====== ESTADOS DE LOADING ====== */
