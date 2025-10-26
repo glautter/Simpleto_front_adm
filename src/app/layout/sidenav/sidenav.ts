@@ -74,7 +74,7 @@ export class SidenavComponent {
         this.activeItem = item.title;
         this.expandedItem = item.title;
       }
-      
+
       // check children
       if (item.children) {
         for (const child of item.children) {
@@ -83,13 +83,13 @@ export class SidenavComponent {
             this.activeItem = item.title;
             this.activeChild = child.title;
             this.expandedItem = item.title;
-            
+
             // Se o child não tem subChildren, já retorna
             if (!child.subChildren) {
               return;
             }
           }
-          
+
           // ✅ NOVO: check subChildren routes
           if (child.subChildren) {
             for (const subChild of child.subChildren) {
@@ -124,151 +124,102 @@ export class SidenavComponent {
 
   menu: MenuItem[] = [
     {
-      title: 'Dashboard',
-      icon: 'dashboard',
-      route: '/dashboard',
-      children: [
-        { title: 'Visão geral do sistema', icon: 'insights' },
-        { title: 'Indicadores principais', icon: 'bar_chart' },
-        { title: 'Acesso rápido às ações', icon: 'bolt' }
-      ]
+      title: 'Condomínio',
+      icon: 'business',
+      route: '/condominio'
     },
     {
-      title: 'Acesso',
-      icon: 'lock',
-      route: '/acesso',
+      title: 'Cadastros',
+      icon: 'app_registration',
+      route: '/cadastros',
       children: [
-        { title: 'Login', icon: 'login' },
-        { title: 'Logout', icon: 'logout' },
-        { title: 'Senha', icon: 'vpn_key' },
-        { title: 'Usuário', icon: 'person' }
-      ]
-    },
-    {
-      title: 'Tabelas',
-      icon: 'table_chart',
-      route: '/tabelas',
-      children: [
-        { title: 'Pacientes', icon: 'people', route: '/pacientes' },
-        { title: 'Funcionários', icon: 'badge', route: '/funcionarios' },
-        { title: 'Clínicas', icon: 'local_hospital' },
-        { title: 'Topografias', icon: 'map' },
-        { title: 'Morfologias', icon: 'category' },
-        { title: 'Materiais para codificação', icon: 'inventory' },
-        { title: 'Diagnósticos para codificação', icon: 'healing' },
-        { title: 'Colorações', icon: 'color_lens', route: '/coloracoes', subChildren: [
-            { title: 'Tipo', icon: 'category', route: '/coloracoes/tipo' },
-            { title: 'Coloração', icon: 'color_lens', route: '/coloracoes/coloracao' }
-          ]
+        {
+          title: 'Condomínio',
+          icon: 'business',
+          route: '/condominio'
         },
-        { title: 'Faturamento', icon: 'request_quote' },
-        { 
-          title: 'Anticorpos - Painel', 
-          icon: 'science', 
-          route: '/anticorpos', 
+        {
+          title: 'Categorias',
+          icon: 'category',
+          route: '/cadastros/categorias',
           subChildren: [
-            { title: 'Tipo', icon: 'category', route: '/anticorpos/tipo' },
-            { title: 'Fornecedor', icon: 'store', route: '/anticorpos/fornecedor' },
-            { title: 'Anticorpo', icon: 'science', route: '/anticorpos/anticorpo' },
-            { title: 'Painel', icon: 'dashboard', route: '/anticorpos/painel' }
-          ]  
-        },
-        { title: 'Tabela TNM', icon: 'assessment', route: '/tabela-tnm', subChildren: [
-            { title: 'Grupo', icon: 'category', route: '/tabela-tnm/tipo' },
-            { title: 'Subgrupo', icon: 'label', route: '/tabela-tnm/categoria' },
-            { title: 'CID', icon: 'timeline', route: '/tabela-tnm/cid' },
-            { title: 'TNM', icon: 'timeline', route: '/tabela-tnm/tnm' },
-            { title: 'Estádio', icon: 'timeline', route: '/estadios' },
-            { title: 'CID x TNM', icon: 'timeline', route: '/tabela-tnm/cid-tnm' }
+            { title: 'Ocorrência', icon: 'warning', route: '/cadastros/categorias/ocorrencia' },
+            { title: 'Anúncio', icon: 'campaign', route: '/cadastros/categorias/anuncio' }
           ]
         },
-        { title: 'Solicitantes', icon: 'assignment_ind' }
+        {
+          title: 'Pessoas',
+          icon: 'people',
+          route: '/cadastros/pessoas',
+          subChildren: [
+            { title: 'Proprietário', icon: 'home', route: '/cadastros/pessoas/proprietario' },
+            { title: 'Inquilino', icon: 'person', route: '/cadastros/pessoas/inquilino' },
+            { title: 'Visitante', icon: 'person_add', route: '/cadastros/pessoas/visitante' },
+            { title: 'Síndico', icon: 'supervisor_account', route: '/cadastros/pessoas/sindico' },
+            { title: 'Sub síndico', icon: 'account_circle', route: '/cadastros/pessoas/subsindico' },
+            { title: 'Funcionário', icon: 'badge', route: '/cadastros/pessoas/funcionario' },
+            { title: 'Dependente', icon: 'family_restroom', route: '/cadastros/pessoas/dependente' }
+          ]
+        }
       ]
     },
     {
-      title: 'Exames',
-      icon: 'assignment',
-      route: '/exames',
+      title: 'Registros',
+      icon: 'description',
+      route: '/registros',
       children: [
-        { title: 'Cadastros', icon: 'add_box' },
-        { title: 'Incluir nova peça', icon: 'post_add' },
-        { title: 'Auditoria', icon: 'rule' },
-        { title: 'Assinatura', icon: 'edit_note' },
-        { title: 'Verificar exames liberados', icon: 'check_circle' }
+        { title: 'Achados e perdidos', icon: 'find_in_page', route: '/registros/achados-perdidos' },
+        { title: 'Anúncio', icon: 'campaign', route: '/registros/anuncio' },
+        { title: 'Ocorrência', icon: 'report_problem', route: '/registros/ocorrencia' },
+        { title: 'Notícia', icon: 'article', route: '/registros/noticia' },
+        { title: 'Encomenda', icon: 'local_shipping', route: '/registros/encomenda' },
+        { title: 'Arquivo', icon: 'folder', route: '/registros/arquivo' },
+        { title: 'Documentos', icon: 'insert_drive_file', route: '/registros/documentos' }
       ]
     },
     {
-      title: 'Técnica',
-      icon: 'build',
-      route: '/tecnica',
+      title: 'Visões',
+      icon: 'visibility',
+      route: '/visoes',
       children: [
-        { title: 'Distribuição de blocos', icon: 'view_module' },
-        { title: 'Liberação de lâminas', icon: 'flip' },
-        { title: 'Relatório de produtividade', icon: 'assessment' }
+        { title: 'Administrativa', icon: 'admin_panel_settings', route: '/visoes/administrativa' },
+        { title: 'Síndico', icon: 'supervisor_account', route: '/visoes/sindico' },
+        { title: 'Sub síndico', icon: 'account_circle', route: '/visoes/subsindico' }
       ]
     },
     {
-      title: 'Imuno-Histoquímica',
-      icon: 'science',
-      route: '/imuno',
+      title: 'Solicitações',
+      icon: 'request_page',
+      route: '/solicitacoes',
       children: [
-        { title: 'Solicitação internas', icon: 'inbox' },
-        { title: 'Solicitação externas', icon: 'outbox' },
-        { title: 'Controle', icon: 'tune' },
-        { title: 'Relatórios', icon: 'description' }
+        { title: 'Reserva', icon: 'event', route: '/solicitacoes/reserva' }
       ]
     },
     {
-      title: 'Codificação',
-      icon: 'edit',
-      route: '/codificacao',
+      title: 'Chat',
+      icon: 'chat',
+      route: '/chat'
+    },
+    {
+      title: 'Contacts',
+      icon: 'contacts',
+      route: '/contacts'
+    },
+    {
+      title: 'Email',
+      icon: 'email',
+      route: '/email',
       children: [
-        { title: 'Histopatológicos', icon: 'description' },
-        { title: 'Citopatológicos', icon: 'fact_check' },
-        { title: 'Conferência', icon: 'rule' },
-        { title: 'Estatística', icon: 'insert_chart' }
+        { title: 'Email Inbox', icon: 'inbox', route: '/email/inbox' },
+        { title: 'Email Details', icon: 'mail', route: '/email/details' },
+        { title: 'Email Compose', icon: 'edit', route: '/email/compose' },
+        { title: 'Badge', icon: 'badge', route: '/email/badge' }
       ]
     },
     {
-      title: 'Consulta',
-      icon: 'search',
-      route: '/consulta',
-      children: [
-        { title: 'Exames do paciente', icon: 'person_search' },
-        { title: 'Receptores', icon: 'hub' },
-        { title: 'Consulta por texto', icon: 'text_snippet' }
-      ]
-    },
-    {
-      title: 'Relatórios',
-      icon: 'bar_chart',
-      route: '/relatorios',
-      children: [
-        { title: 'Histopatológicos', icon: 'description' },
-        { title: 'Citopatológicos', icon: 'analytics' },
-        { title: 'Por clínica', icon: 'local_hospital' },
-        { title: 'Pendentes', icon: 'pending_actions' }
-      ]
-    },
-    {
-      title: 'Gerenciais',
-      icon: 'analytics',
-      route: '/gerenciais',
-      children: [
-        { title: 'Estatística por clínica', icon: 'bar_chart' },
-        { title: 'Produtividade', icon: 'speed' },
-        { title: 'Auditoria faturamento', icon: 'rule' }
-      ]
-    },
-    {
-      title: 'Utilitários',
-      icon: 'settings',
-      route: '/utilitarios',
-      children: [
-        { title: 'Etiquetas', icon: 'print' },
-        { title: 'Exportação SISCOLO', icon: 'file_upload' },
-        { title: 'Unidade', icon: 'business' }
-      ]
+      title: 'Sair',
+      icon: 'exit_to_app',
+      route: '/logout'
     }
   ];
 }

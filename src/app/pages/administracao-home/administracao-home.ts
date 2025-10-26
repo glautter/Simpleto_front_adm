@@ -4,7 +4,6 @@ import { MatSidenavContainer, MatSidenav, MatSidenavContent } from "@angular/mat
 import { SidenavComponent } from "../../layout/sidenav/sidenav";
 import { RouterOutlet } from "@angular/router";
 import { BreakpointObserver } from '@angular/cdk/layout';
-
 @Component({
   selector: 'app-administracao-home',
   standalone: true,
@@ -13,12 +12,12 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./administracao-home.scss']
 })
 export class AdministracaoHomeComponent {
-@ViewChild(MatSidenav)
+  @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isSidenavOpen = true;
   isMobile = false;
 
-  constructor(private observer: BreakpointObserver) {}
+  constructor(private observer: BreakpointObserver) { }
 
   ngAfterViewInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {

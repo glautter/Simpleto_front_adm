@@ -1,3 +1,9 @@
+// Variáveis para manter consistência
+$azul: #01586d;
+$amarelo: #ffdd57;
+$azul-claro: lighten($azul, 50%);
+$azul-hover: lighten($azul, 5%);
+
 /* ====== CONTAINER PRINCIPAL ====== */
 .base {
   background: #ffffff;
@@ -7,7 +13,6 @@
   border: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
-  /* max-height: calc(100vh - 220px); Altura máxima dinâmica */
 }
 
 /* ====== CABEÇALHO ====== */
@@ -17,7 +22,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 1.75rem;
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, $azul 0%, darken($azul, 10%) 100%);
   color: #fff;
 }
 
@@ -43,29 +48,36 @@
   color: #334155;
   min-width: 220px;
   transition: all 0.2s ease;
+  background: white;
 }
 
 .base__search input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  border-color: $amarelo;
+  box-shadow: 0 0 0 3px rgba(255, 221, 87, 0.3);
   outline: none;
+}
+
+.base__search input::placeholder {
+  color: #94a3b8;
 }
 
 /* ====== BOTÕES DE AÇÃO ====== */
 .base__actions .btn {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: #1d4ed8;
+  background: $amarelo;
+  border: 1px solid darken($amarelo, 10%);
+  color: #000;
   padding: 0.5rem 0.875rem;
   border-radius: 8px;
   font-weight: 650;
   font-size: 0.938rem;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .base__actions .btn:hover {
-  background: #dbeafe;
+  background: darken($amarelo, 10%);
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* ====== ÁREA DA TABELA (ROLÁVEL) ====== */
@@ -85,14 +97,14 @@
 .base__table thead th {
   position: sticky;
   top: 0;
-  background: #f8fafc;
-  color: #475569;
+  background: $azul;
+  color: #fff;
   font-weight: 650;
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 1rem 1.5rem;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 2px solid darken($azul, 5%);
   z-index: 2;
 }
 
@@ -107,8 +119,8 @@
   transition: all 0.2s ease;
 }
 
-.base__table tr:hover {
-  background-color: #f8fafc;
+.base__table tbody tr:hover {
+  background-color: lighten($azul, 60%);
 }
 
 /* ====== COLUNA DE AÇÕES ====== */
@@ -147,16 +159,18 @@
 
 /* Editar */
 .btn-edit {
-  color: #3b82f6;
+  color: $azul;
 }
+
 .btn-edit:hover {
-  background-color: #eff6ff;
+  background-color: $azul-claro;
 }
 
 /* Excluir */
 .btn-delete {
   color: #ef4444;
 }
+
 .btn-delete:hover {
   background-color: #fef2f2;
 }
@@ -167,7 +181,7 @@
   bottom: 110%;
   left: 50%;
   transform: translateX(-50%) translateY(0);
-  background: #1f2937;
+  background: $azul;
   color: #fff;
   font-size: 0.75rem;
   font-weight: 500;
@@ -189,7 +203,7 @@
 .base__footer {
   flex-shrink: 0;
   padding: 0.75rem 1.5rem;
-  background: #fafafa;
+  background: lighten($azul, 58%);
   border-top: 1px solid #e2e8f0;
   display: flex;
   justify-content: flex-end;
@@ -205,32 +219,49 @@
 .pagination button {
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid $azul;
   background: #fff;
+  color: $azul;
   transition: all 0.2s ease;
+  cursor: pointer;
+  font-weight: 500;
 }
 
-.pagination button:hover {
-  background-color: #f1f5f9;
+.pagination button:hover:not(:disabled) {
+  background-color: $azul;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #cbd5e1;
+  color: #94a3b8;
 }
 
 .pagination span {
-  color: #475569;
-  font-weight: 500;
+  color: $azul;
+  font-weight: 600;
+  padding: 0 0.5rem;
 }
 
 /* ====== SCROLLBAR PERSONALIZADA ====== */
 .base__table::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
+}
+
+.base__table::-webkit-scrollbar-track {
+  background: #f1f5f9;
 }
 
 .base__table::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: lighten($azul, 30%);
   border-radius: 8px;
 }
 
 .base__table::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: $azul;
 }
 
 /* ====== RESPONSIVO ====== */
@@ -249,9 +280,20 @@
     font-size: 1.125rem;
   }
 
+  .base__controls {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .base__search input {
+    width: 100%;
+    min-width: auto;
+  }
+
   .base__table th,
   .base__table td {
     padding: 0.75rem 1rem;
+    font-size: 0.875rem;
   }
 
   .btn-icon {
@@ -260,12 +302,13 @@
   }
 }
 
+/* ====== FORMULÁRIO CRUD ====== */
 .crud-form__grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 4px; /* reduz o espaçamento entre os campos */
+  gap: 4px;
   width: 100%;
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
 }
 
 .crud-form__field {
@@ -280,27 +323,35 @@
 }
 
 /* ====== CAMPOS MATERIAL DESIGN ====== */
-
 .mat-mdc-form-field {
   background-color: white;
-  margin-bottom: 2px; /* reduz espaço vertical */
-  line-height: 1.2; /* reduz altura visual */
+  margin-bottom: 2px;
+  line-height: 1.2;
 }
 
 .mat-mdc-text-field-wrapper {
-  min-height: 36px !important; /* altura mais compacta */
+  min-height: 36px !important;
   padding: 0 4px !important;
 }
 
 .mat-mdc-form-field-infix {
-  padding: 2px 0 !important; /* controla a altura interna */
+  padding: 2px 0 !important;
 }
 
 .mat-mdc-form-field-outline {
   border-radius: 8px;
 }
 
-/* ====== AJUSTE GERAL ====== */
+// Focus nos campos
+.mat-mdc-form-field.mat-focused {
+  .mat-mdc-notch-piece {
+    border-color: $amarelo !important;
+  }
+
+  .mat-mdc-form-field-label {
+    color: $azul !important;
+  }
+}
 
 .mat-mdc-form-field-label-wrapper {
   top: -6px !important;
@@ -308,6 +359,7 @@
 
 .mat-mdc-form-field-label {
   font-size: 0.85rem !important;
+  color: $azul;
 }
 
 .mat-mdc-input-element {
@@ -316,7 +368,6 @@
 }
 
 /* ====== BOTÕES ====== */
-
 button {
   border-radius: 6px;
   min-height: 32px;
@@ -324,12 +375,12 @@ button {
 }
 
 .base__actions .btn.icon {
-  background: transparent !important; /* remove fundo */
-  border: none !important; /* remove borda */
-  box-shadow: none !important; /* remove sombra */
-  padding: 4px !important; /* espaçamento mínimo ao redor do ícone */
-  cursor: pointer; /* mantém aparência de botão clicável */
-  display: flex; /* centraliza o ícone */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 4px !important;
+  cursor: pointer;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -341,5 +392,34 @@ button {
 }
 
 .base__actions .btn.icon:hover mat-icon {
-  color: #2563eb; /* muda de cor ao passar o mouse */
+  color: $amarelo !important;
+}
+
+/* ====== ESTADOS DE LOADING ====== */
+.base__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: $azul;
+}
+
+/* ====== MENSAGENS VAZIAS ====== */
+.base__empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #64748b;
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: lighten($azul, 30%);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 0;
+  }
 }

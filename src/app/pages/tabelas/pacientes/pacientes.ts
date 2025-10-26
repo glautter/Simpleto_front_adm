@@ -3,19 +3,16 @@ import { CommonModule } from '@angular/common';
 import { ListBaseComponent } from '../../../shared/list-base/list-base.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { PacienteFormDialogComponent } from './paciente-form-dialog';
-import { HeaderComponent } from "../../../layout/header/header";
-import { MatSidenavContainer, MatSidenav, MatSidenavContent } from "@angular/material/sidenav";
-import { SidenavComponent } from "../../../layout/sidenav/sidenav";
 
 @Component({
   selector: 'app-pacientes',
   standalone: true,
-  imports: [CommonModule, ListBaseComponent, MatDialogModule, HeaderComponent, MatSidenavContainer, MatSidenav, SidenavComponent, MatSidenavContent],
+  imports: [CommonModule, ListBaseComponent, MatDialogModule],
   templateUrl: './pacientes.html',
   styleUrls: ['./pacientes.scss'],
 })
 export class PacientesComponent {
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) { }
   data = [
     {
       matricula: '0001',

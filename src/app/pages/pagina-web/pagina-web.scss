@@ -6,7 +6,6 @@
 }
 
 $azul: #01586d;
-//#4ba7b0;
 $amarelo: #ffdd57;
 $cinzaClaro: #f4f4f4;
 
@@ -27,20 +26,25 @@ a {
   margin: auto;
 }
 
+// Navbar com Material
 .navbar {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   width: 100%;
-  background-color: $azul;
-  color: white;
-  padding: 1rem 0;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  // Sobrescreve cores do Material
+  &.mat-toolbar {
+    background-color: $azul !important;
+    color: white !important;
+  }
 
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
   }
 
   .logo {
@@ -54,14 +58,28 @@ a {
 
   .menu {
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 0.5rem;
 
-    a {
-      font-weight: 500;
+    // Botões do Material
+    ::ng-deep .mat-mdc-button,
+    ::ng-deep .mat-mdc-raised-button {
       color: white;
 
       &:hover {
         color: $amarelo;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    // Botão de ação (Acesso ao Sistema)
+    ::ng-deep .mat-mdc-raised-button.btn-primary {
+      background-color: $amarelo !important;
+      color: #000 !important;
+      font-weight: bold;
+
+      &:hover {
+        background-color: darken($amarelo, 10%) !important;
       }
     }
   }
@@ -96,7 +114,7 @@ a {
       font-size: 2.8rem;
       margin-bottom: 1rem;
       line-height: 1.2;
-      // ajuste para quebra controlada
+
       .mobile‑linebreak {
         display: none;
       }
@@ -116,7 +134,7 @@ a {
       transition: 0.3s;
 
       &:hover {
-        background-color: background-color($amarelo, 10%);
+        background-color: darken($amarelo, 10%);
       }
     }
   }
@@ -128,10 +146,19 @@ a {
     .hero-content {
       h2 {
         font-size: 2.2rem;
+
         .mobile‑linebreak {
           display: block;
         }
       }
+    }
+  }
+
+  // Menu responsivo
+  .navbar {
+    .menu {
+      flex-direction: column;
+      gap: 0.25rem;
     }
   }
 }
@@ -242,14 +269,14 @@ a {
     border-radius: 5px;
 
     &:hover {
-      background-color: background-color($amarelo, 10%);
+      background-color: darken($amarelo, 10%);
     }
   }
 }
 
 // Footer
 .footer {
-  background-color: background-color($azul, 10%);
+  background-color: darken($azul, 10%);
   color: white;
   padding: 2rem 0;
   text-align: center;
