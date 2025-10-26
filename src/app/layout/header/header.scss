@@ -3,6 +3,7 @@
 $verde: #01586d;
 $amarelo: #ffdd57;
 
+/* Altura e cor do header */
 .navbar {
   position: fixed;
   top: 0;
@@ -11,30 +12,53 @@ $amarelo: #ffdd57;
   height: 64px;
   background-color: $verde !important;
   color: white;
-  z-index: 1000;
   display: flex;
   align-items: center;
+  justify-content: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
 
   .navbar-content {
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     padding: 0 1.5rem;
   }
 
+  /* 🔹 Logo alinhada à esquerda */
   .logo {
     width: 160px;
     height: 48px;
     background: url('../../../assets/imgs/logo_vv.png') no-repeat left center;
     background-size: contain;
+    flex-shrink: 0;
   }
 
+  /* 🔹 Botão Hamburguer alinhado ao final do sidenav */
+  .menu-toggle {
+    position: absolute;
+    left: 360px; // mesma largura do sidenav
+    transform: translateX(-50%);
+    color: white;
+    transition: transform 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1) translateX(-50%);
+      color: $amarelo;
+    }
+
+    mat-icon {
+      font-size: 28px;
+    }
+  }
+
+  /* 🔹 Menu superior à direita */
   .menu {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
+    margin-left: auto;
 
     ::ng-deep .mat-mdc-button {
       color: white;
@@ -44,15 +68,32 @@ $amarelo: #ffdd57;
       }
     }
 
-    ::ng-deep .mat-mdc-raised-button.btn-primary {
+    ::ng-deep .btn-primary {
       background-color: $amarelo !important;
       color: #000 !important;
       font-weight: bold;
-
       &:hover {
         background-color: color.scale($amarelo, $lightness: 10%) !important;
       }
-
     }
   }
 }
+
+.menu-toggle {
+  position: absolute;
+  left: 360px; // mesma largura do sidenav
+  color: white;
+  transition: transform 0.2s ease, color 0.2s ease;
+  margin-left: -0.8rem; // pequeno espaçamento entre menu e botão
+  transform: none; // remove o deslocamento que centralizava demais
+
+  &:hover {
+    transform: scale(1.1);
+    color: $amarelo;
+  }
+
+  mat-icon {
+    font-size: 28px;
+  }
+}
+

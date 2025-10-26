@@ -1,7 +1,15 @@
 <mat-toolbar color="primary" class="navbar">
   <div class="navbar-content">
-    <div class="logo" aria-label="Logo Simpleto Adm"></div>
 
+    <!-- 🔹 Logo -->
+    <div class="logo" aria-label="Logo Simpleto Adm"></div>
+    
+    <!-- 🔹 Botão Hamburguer -->
+    <button mat-icon-button class="menu-toggle" (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- 🔹 Menu superior -->
     <div class="menu" *ngIf="!isMobile">
       <button mat-button>Início</button>
       <button mat-button>Sobre</button>

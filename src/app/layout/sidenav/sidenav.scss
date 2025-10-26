@@ -19,12 +19,17 @@ $verde-claro: color.scale($verde, $lightness: 20%); // sub-submenus
   padding: 0;
   margin: 0;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 
   scrollbar-width: none; // Firefox
   -ms-overflow-style: none; // IE/Edge
   &::-webkit-scrollbar {
     display: none; // Chrome/Safari
   }
+}
+
+mat-sidenav {
+  transition: width 0.3s ease;
 }
 
 /* Remove sublinhados globais */

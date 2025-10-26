@@ -1,8 +1,12 @@
-<app-header></app-header>
+<app-header
+  (menuToggle)="toggleSidenav()"
+  [isMobile]="isMobile"
+  [isSidenavOpen]="isSidenavOpen">
+</app-header>
 
 <mat-sidenav-container class="layout-container">
-  <mat-sidenav mode="side" opened>
-    <app-sidenav></app-sidenav>
+  <mat-sidenav #sidenav [mode]="sidenavMode" [opened]="isSidenavOpen">
+    <app-sidenav [collapsed]="!isSidenavOpen"></app-sidenav>
   </mat-sidenav>
 
   <mat-sidenav-content>

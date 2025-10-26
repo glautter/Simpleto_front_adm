@@ -61,26 +61,18 @@ export class AdministracaoHomeComponent implements OnInit, AfterViewInit {
   }
 
   toggleSidenav() {
-    if (!this.isBrowser) return; // evita erro em SSR
-
-    // Toggle o drawer
-    if (this.sidenav.mode === 'over') {
-      if (this.isSidenavOpen) {
-        this.sidenav.close();
-      } else {
-        this.sidenav.open();
-      }
-      this.isSidenavOpen = !this.isSidenavOpen;
-      return;
-    }
-
-    // Desktop
-    if (this.isSidenavOpen) {
-      this.sidenav.close();
-    } else {
-      this.sidenav.open();
-    }
+  if (this.sidenav.mode === 'over') {
+    this.isSidenavOpen ? this.sidenav.close() : this.sidenav.open();
     this.isSidenavOpen = !this.isSidenavOpen;
-    console.log('toggleSidenav: isSidenavOpen=', this.isSidenavOpen);
+    return;
   }
+
+  // Desktop: recolhe o menu lateral
+  if (this.isSidenavOpen) {
+    this.sidenav.close();
+  } else {
+    this.sidenav.open();
+  }
+  this.isSidenavOpen = !this.isSidenavOpen;
+}
 }
