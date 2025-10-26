@@ -1,4 +1,3 @@
-// pagina-web.component.ts
 import { Component, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -12,7 +11,7 @@ import { HeaderComponent } from '../../layout/header/header';
   selector: 'app-pagina-web',
   standalone: true,
   templateUrl: './pagina-web.html',
-  styleUrls: ['./pagina-web.scss'], // <-- Corrigido: era "styleUrl"
+  styleUrls: ['./pagina-web.scss'],
   imports: [
     MatSidenavModule,
     MatToolbarModule,
@@ -20,7 +19,7 @@ import { HeaderComponent } from '../../layout/header/header';
     MatIconModule,
     MatListModule,
     HeaderComponent
-]
+  ]
 })
 export class PaginaWebComponent implements AfterViewInit {
   @Output() menuToggle = new EventEmitter<void>();
@@ -33,9 +32,12 @@ export class PaginaWebComponent implements AfterViewInit {
   constructor(private observer: BreakpointObserver) { }
 
   ngAfterViewInit(): void {
-    // Exemplo simples para detectar se é mobile e ajustar o comportamento
+    // Garantir que o sidenav exista antes de acessar
     this.observer.observe(['(max-width: 800px)']).subscribe(result => {
       this.isMobile = result.matches;
+
+      if (!this.sidenav) return; // ✅ Verificação
+
       if (this.isMobile) {
         this.sidenav.mode = 'over';
         this.sidenav.close();
@@ -45,6 +47,7 @@ export class PaginaWebComponent implements AfterViewInit {
       }
     });
   }
+
   onToggleSidenav() {
     this.menuToggle.emit();
   }
