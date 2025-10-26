@@ -1,3 +1,63 @@
+@use 'sass:color';
+
+$verde: #01586d;
+$amarelo: #ffdd57;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: $verde !important;
+  color: white;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  .navbar-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+  }
+
+  .logo {
+    width: 160px;
+    height: 48px;
+    background: url('../../../assets/imgs/logo_vv.png') no-repeat left center;
+    background-size: contain;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    ::ng-deep .mat-mdc-button {
+      color: white;
+      font-weight: 500;
+
+      &:hover {
+        color: $amarelo;
+      }
+    }
+
+    ::ng-deep .mat-mdc-raised-button.btn-primary {
+      background-color: $amarelo !important;
+      color: #000 !important;
+      font-weight: bold;
+
+      &:hover {
+        background-color: color.scale($amarelo, $lightness: 10%) !important;
+      }
+
+    }
+  }
+}
+
 // Reset e variáveis
 * {
   margin: 0;
