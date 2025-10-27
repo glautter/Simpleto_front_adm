@@ -51,6 +51,14 @@ export class SidenavComponent {
     }
   }
 
+  onHoverExpand(isHovering: boolean) {
+  if (this.collapsed) {
+    const sidenav = document.querySelector('.gb-sidenav') as HTMLElement;
+    if (!sidenav) return;
+    sidenav.style.width = isHovering ? '360px' : '80px';
+  }
+}
+
   // ✅ NOVO: Toggle para subChildren
   toggleExpandChild(parentTitle: string, childTitle: string) {
     const key = `${parentTitle}-${childTitle}`;

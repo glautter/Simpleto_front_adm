@@ -2,51 +2,74 @@
 
 $verde: #01586d;
 $verde-florescente: #00ffea;
-$cinza-claro: #f4f4f4;
 
-/* Tons derivados do verde base */
-$verde-principal: $verde; // menu principal
-$verde-medio: color.scale($verde, $lightness: 10%); // submenus
-$verde-claro: color.scale($verde, $lightness: 20%); // sub-submenus
-
-/* ========== SIDENAV BASE ========== */
+// base
 .gb-sidenav {
-  background: $verde-principal;
+  background: $verde;
   color: #fff;
-  height: 100%;
+  height: calc(100vh - 64px);
+  width: 360px;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0;
   margin: 0;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: 2px 0 8px rgba(0,0,0,.1);
+  transition: width .3s ease;
 
-  scrollbar-width: none; // Firefox
-  -ms-overflow-style: none; // IE/Edge
-  &::-webkit-scrollbar {
-    display: none; // Chrome/Safari
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* recolhido: mantém ícones, esconde textos/chevrons/submenus */
+.gb-sidenav.collapsed {
+  width: 80px;
+
+  .gb-sidenav__title,
+  .gb-sidenav__chev,
+  .gb-sidenav__submenu,
+  .gb-sidenav__subsubmenu {
+    display: none;
+  }
+
+  .gb-sidenav__button,
+  .gb-sidenav__submenu-link {
+    justify-content: center;
+    padding: 14px 0;
+  }
+
+  .gb-sidenav__icon {
+    margin: 0;
+    font-size: 24px;
+    width: 24px;
+    text-align: center;
   }
 }
 
-mat-sidenav {
-  transition: width 0.3s ease;
+/* expandir automaticamente no hover (quando recolhido) */
+.gb-sidenav.collapsed:hover {
+  width: 360px;
+
+  .gb-sidenav__title,
+  .gb-sidenav__chev {
+    display: inline;
+  }
+
+  .gb-sidenav__button,
+  .gb-sidenav__submenu-link {
+    justify-content: flex-start;
+    padding: 12px 20px;
+  }
+
+  .gb-sidenav__icon {
+    margin-right: 10px;
+  }
+
+  .gb-sidenav__submenu {
+    display: block;
+  }
 }
 
-/* Remove sublinhados globais */
-.gb-sidenav a,
-.gb-sidenav__submenu-link,
-.gb-sidenav__subsubmenu a {
-  text-decoration: none !important;
-  color: inherit;
-}
-
-.gb-sidenav a:hover,
-.gb-sidenav__submenu-link:hover,
-.gb-sidenav__subsubmenu a:hover {
-  text-decoration: none !important;
-}
-
-/* ========== LISTAS ========== */
+/* listas */
 .gb-sidenav__list,
 .gb-sidenav__submenu,
 .gb-sidenav__subsubmenu {
@@ -55,11 +78,8 @@ mat-sidenav {
   margin: 0;
 }
 
-/* ========== ITENS PRINCIPAIS (nível 1) ========== */
-.gb-sidenav__item {
-  display: block;
-  width: 100%;
-}
+/* itens */
+.gb-sidenav__item { display: block; width: 100%; }
 
 .gb-sidenav__button,
 .gb-sidenav__submenu-link {
@@ -72,75 +92,60 @@ mat-sidenav {
   padding: 12px 20px;
   color: #fff;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background .25s ease, color .25s ease;
 
   &:hover {
-    background: color.scale($verde-principal, $lightness: 20%);
+    background: color.scale($verde, $lightness: 20%);
     color: $verde-florescente;
-  }
-
-  .gb-sidenav__icon {
-    font-size: 22px;
-    margin-right: 10px;
-    flex-shrink: 0;
-  }
-
-  .gb-sidenav__title {
-    flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .gb-sidenav__chev {
-    margin-left: auto;
-    color: rgba(255, 255, 255, 0.7);
   }
 }
 
-/* Ativo (nível 1) */
+.gb-sidenav__icon {
+  font-size: 22px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.gb-sidenav__title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gb-sidenav__chev {
+  margin-left: auto;
+  color: rgba(255,255,255,.7);
+}
+
+/* ativo */
 .gb-sidenav__item.active > .gb-sidenav__button {
-  background: color.scale($verde-principal, $lightness: 15%);
+  background: color.scale($verde, $lightness: 15%);
   border-left: 4px solid $verde-florescente;
   color: $verde-florescente;
+
+  .gb-sidenav__icon { color: $verde-florescente; }
 }
 
-/* ========== SUBMENUS (nível 2) ========== */
-.gb-sidenav__submenu {
-  background: $verde-medio;
-}
-
-.gb-sidenav__submenu-link {
-  padding-left: 40px;
-
-  &:hover {
-    background: color.scale($verde-medio, $lightness: 15%);
-    color: $verde-florescente;
-  }
-}
-
+/* submenus */
+.gb-sidenav__submenu { background: color.scale($verde, $lightness: 10%); }
+.gb-sidenav__submenu-link { padding-left: 40px; }
 .gb-sidenav__submenu li.active > .gb-sidenav__submenu-link {
-  background: color.scale($verde-medio, $lightness: 10%);
+  background: color.scale($verde, $lightness: 10%);
   border-left: 3px solid $verde-florescente;
   color: $verde-florescente;
 }
 
-/* ========== SUB-SUBMENUS (nível 3) ========== */
-.gb-sidenav__subsubmenu {
-  background: $verde-claro;
-}
+/* sub-submenus */
+.gb-sidenav__subsubmenu { background: color.scale($verde, $lightness: 20%); }
+.gb-sidenav__subsubmenu li a { padding-left: 60px; }
 
-.gb-sidenav__subsubmenu li a {
-  padding-left: 60px;
-
-  &:hover {
-    background: color.scale($verde-claro, $lightness: 15%);
-    color: $verde-florescente;
-  }
-}
-
-.gb-sidenav__subsubmenu li.active > a {
-  background: color.scale($verde-claro, $lightness: 10%);
-  border-left: 2px solid $verde-florescente;
-  color: $verde-florescente;
+/* links sem sublinhado */
+.gb-sidenav a,
+.gb-sidenav__submenu-link,
+.gb-sidenav__subsubmenu a {
+  text-decoration: none !important;
+  color: inherit;
 }

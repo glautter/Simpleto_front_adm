@@ -1,15 +1,24 @@
 <app-header
   (menuToggle)="toggleSidenav()"
   [isMobile]="isMobile"
-  [isSidenavOpen]="isSidenavOpen">
+  [isSidenavOpen]="!isSidenavOpen">
 </app-header>
 
-<mat-sidenav-container class="layout-container">
-  <mat-sidenav #sidenav [mode]="sidenavMode" [opened]="isSidenavOpen">
-    <app-sidenav [collapsed]="!isSidenavOpen"></app-sidenav>
+<mat-sidenav-container class="layout-container" autosize>
+  <mat-sidenav
+    [mode]="sidenavMode"
+    opened
+    [class.collapsed]="isSidenavOpen"
+    (mouseenter)="hover = true"
+    (mouseleave)="hover = false"
+  >
+    <app-sidenav [collapsed]="isSidenavOpen && !hover"></app-sidenav>
   </mat-sidenav>
 
-  <mat-sidenav-content>
+  <mat-sidenav-content
+    [class.sidenav-collapsed]="isSidenavOpen && !hover"
+    [class.sidenav-expanded]="!isSidenavOpen || hover"
+  >
     <main class="main-content">
       <router-outlet></router-outlet>
     </main>

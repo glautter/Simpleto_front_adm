@@ -38,7 +38,7 @@ $amarelo: #c4b70e;
   /* 🔹 Botão Hamburguer alinhado ao final do sidenav */
   .menu-toggle {
     position: absolute;
-    left: 360px; // mesma largura do sidenav
+    left: 360px;
     transform: translateX(-50%);
     color: white;
     transition: transform 0.2s ease, color 0.2s ease;

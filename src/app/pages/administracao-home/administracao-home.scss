@@ -1,45 +1,59 @@
 :host {
-  display: flex;
-  flex-direction: column;
+  display: block;
   height: 100vh;
   overflow: hidden;
 }
 
-/* Container principal do sidenav e conteúdo */
+/* container principal */
 .layout-container {
   display: flex;
-  flex: 1;
-  height: calc(100vh - 64px);
-  margin-top: 64px; /* compensa o header fixo */
+  height: 100%;
+  margin-top: 64px; // compensa o header fixo
 }
 
-/* Sidenav */
+/* ========== SIDENAV ========== */
 mat-sidenav {
   background-color: #01586d;
   color: white;
   border: none;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  width: 360px;
+  transition: width 0.3s ease;
 }
 
-/* Conteúdo principal (mat-sidenav-content) */
+/* recolhido */
+mat-sidenav.collapsed {
+  width: 80px;
+}
+
+/* expande automaticamente ao passar o mouse */
+mat-sidenav.collapsed:hover {
+  width: 360px;
+}
+
+/* ========== CONTEÚDO ========== */
 mat-sidenav-content {
-  display: flex;              /* 🔹 permite que o conteúdo interno expanda */
-  flex-direction: column;
-  flex: 1;                    /* 🔹 força ocupar toda a altura restante */
+  background-color: #f5f5f5;
+  flex: 1;
   height: 100%;
   overflow: hidden;
-  background-color: #f5f5f5;
+  transition: margin-left 0.3s ease;
 }
 
-/* MAIN dentro do sidenav-content */
+/* quando menu recolhido */
+mat-sidenav-content.sidenav-collapsed {
+  margin-left: 80px;
+}
+
+/* quando expandido ou hover */
+mat-sidenav-content.sidenav-expanded {
+  margin-left: 360px;
+}
+
+/* conteúdo principal dentro do router-outlet */
 .main-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;                    /* 🔹 ocupa o total disponível */
-  width: 100%;
   height: 100%;
-  overflow: hidden;
-  padding: 0;                 /* 🔹 padding controlado pelas páginas internas */
-  box-sizing: border-box;
+  padding: 0;
+  overflow: auto;
 }
