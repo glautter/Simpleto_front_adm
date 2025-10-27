@@ -24,6 +24,6 @@ export class HeaderComponent {
   }
 
   goHome() {
-    this.router.navigate(['/administracao-home']);
+    this.router.navigate(['/administracao-home/dashboard-condominio']);
   }
 }

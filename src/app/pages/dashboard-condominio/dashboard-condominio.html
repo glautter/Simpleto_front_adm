@@ -1,0 +1,56 @@
+<div class="dashboard">
+  <h2>🏠 Visão Geral do Condomínio</h2>
+
+  <div class="cards">
+    <mat-card class="info-card">
+      <mat-icon>apartment</mat-icon>
+      <div>
+        <h3>{{ resumo.blocos }}</h3>
+        <p>Blocos</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="info-card">
+      <mat-icon>home</mat-icon>
+      <div>
+        <h3>{{ resumo.unidades }}</h3>
+        <p>Unidades</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="info-card">
+      <mat-icon>people</mat-icon>
+      <div>
+        <h3>{{ resumo.moradores }}</h3>
+        <p>Moradores</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="info-card">
+      <mat-icon>person_add</mat-icon>
+      <div>
+        <h3>{{ resumo.visitantesHoje }}</h3>
+        <p>Visitantes Hoje</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="info-card warning">
+      <mat-icon color="warn">warning</mat-icon>
+      <div>
+        <h3>{{ resumo.ocorrenciasAbertas }}</h3>
+        <p>Ocorrências Abertas</p>
+      </div>
+    </mat-card>
+  </div>
+
+  <section class="avisos">
+    <h3><mat-icon>campaign</mat-icon> Avisos Recentes</h3>
+    <div class="avisos-list">
+      <mat-card *ngFor="let aviso of avisos" class="aviso-card">
+        <h4>{{ aviso.titulo }}</h4>
+        <small>{{ aviso.data | date: 'dd/MM/yyyy' }}</small>
+        <p>{{ aviso.descricao }}</p>
+      </mat-card>
+    </div>
+  </section>
+</div>
