@@ -3,11 +3,13 @@ import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { CrudTabsFormComponent } from '../../../shared/crud-tabs-form/crud-tabs-form.component';
 import { CrudTabsConfig } from '../../../shared/models/crud-tabs-form/crud-tabs-form.model';
+import { CrudFormComponent } from '../../../shared/crud-form/crud-form.component';
+import { FormField } from '../../../shared/models/form-field/form-field.model';
 
 @Component({
   selector: 'app-funcionario-form',
   standalone: true,
-  imports: [CommonModule, CrudTabsFormComponent],
+  imports: [CommonModule, CrudFormComponent, CrudTabsFormComponent],
   templateUrl: './funcionario-form.html',
   styleUrls: ['./funcionario-form.scss']
 })
@@ -15,47 +17,54 @@ export class FuncionarioFormComponent {
   @Input() initialData: any = {};
   @Output() save = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<void>();
+  fields: FormField[] = [];
 
-  @ViewChild(CrudTabsFormComponent) crudTabs!: CrudTabsFormComponent;
+  @ViewChild('formPrincipal') formPrincipal!: CrudFormComponent;
+  @ViewChild('tabsFilhas') tabsFilhas!: CrudTabsFormComponent;
 
-  config: CrudTabsConfig = {
-    showTabsOnTop: true,
-    tabs: [
+  constructor() {
+    this.buildFields();
+  }
+
+  private buildFields() {
+    // Configuração do formulário principal
+    this.fields = [
+      { key: 'matricula', label: 'Matrícula', type: 'text', size: 3, required: true },
+      { key: 'cpf', label: 'CPF', type: 'text', size: 3, required: true, mask: 'cpf' },
+      { key: 'nome', label: 'Nome Completo', type: 'text', size: 6, required: true },
+      { key: 'nascimento', label: 'Data de Nascimento', type: 'date', size: 3, required: true },
       {
-        id: 'dados-pessoais',
-        label: 'Dados Pessoais',
-        icon: '👤',
-        fields: [
-          { key: 'matricula', label: 'Matrícula', type: 'text', size: 3, required: true },
-          { key: 'cpf', label: 'CPF', type: 'text', size: 3, required: true, mask: 'cpf' },
-          { key: 'nome', label: 'Nome Completo', type: 'text', size: 6, required: true },
-          { key: 'nascimento', label: 'Data de Nascimento', type: 'date', size: 3, required: true },
-          { key: 'sexo', label: 'Sexo', type: 'select', size: 3, required: true, 
-            options: [
-              { value: 'M', label: 'Masculino' },
-              { value: 'F', label: 'Feminino' },
-              { value: 'O', label: 'Outro' }
-            ]
-          },
-          { key: 'estado_civil', label: 'Estado Civil', type: 'select', size: 3,
-            options: [
-              { value: 'solteiro', label: 'Solteiro(a)' },
-              { value: 'casado', label: 'Casado(a)' },
-              { value: 'divorciado', label: 'Divorciado(a)' },
-              { value: 'viuvo', label: 'Viúvo(a)' }
-            ]
-          },
-          { key: 'email', label: 'E-mail', type: 'text', size: 6 },
-          { key: 'telefone', label: 'Telefone', type: 'text', size: 3, mask: 'phone' }
+        key: 'sexo', label: 'Sexo', type: 'select', size: 3, required: true,
+        options: [
+          { value: 'M', label: 'Masculino' },
+          { value: 'F', label: 'Feminino' },
+          { value: 'O', label: 'Outro' }
         ]
       },
+      {
+        key: 'estado_civil', label: 'Estado Civil', type: 'select', size: 3,
+        options: [
+          { value: 'solteiro', label: 'Solteiro(a)' },
+          { value: 'casado', label: 'Casado(a)' },
+          { value: 'divorciado', label: 'Divorciado(a)' },
+          { value: 'viuvo', label: 'Viúvo(a)' }
+        ]
+      },
+      { key: 'email', label: 'E-mail', type: 'text', size: 6 },
+      { key: 'telefone', label: 'Telefone', type: 'text', size: 3, mask: 'phone' }
+    ];
+  }
+  tabsConfig: CrudTabsConfig = {
+    showTabsOnTop: true,
+    tabs: [
       {
         id: 'endereco',
         label: 'Endereço',
         icon: '🏠',
         fields: [
           { key: 'cep', label: 'CEP', type: 'text', size: 2, mask: 'cep', required: true },
-          { key: 'tipo_logradouro', label: 'Tipo', type: 'select', size: 2,
+          {
+            key: 'tipo_logradouro', label: 'Tipo', type: 'select', size: 2,
             options: [
               { value: 'rua', label: 'Rua' },
               { value: 'avenida', label: 'Avenida' },
@@ -68,13 +77,13 @@ export class FuncionarioFormComponent {
           { key: 'complemento', label: 'Complemento', type: 'text', size: 3 },
           { key: 'bairro', label: 'Bairro', type: 'text', size: 4, required: true },
           { key: 'cidade', label: 'Cidade', type: 'text', size: 4, required: true },
-          { key: 'estado', label: 'Estado', type: 'select', size: 2, required: true,
+          {
+            key: 'estado', label: 'Estado', type: 'select', size: 2, required: true,
             options: [
               { value: 'SP', label: 'SP' },
               { value: 'RJ', label: 'RJ' },
               { value: 'MG', label: 'MG' },
               { value: 'ES', label: 'ES' }
-              // ... adicionar demais estados
             ]
           }
         ]
@@ -88,7 +97,8 @@ export class FuncionarioFormComponent {
           { key: 'rg_orgao', label: 'Órgão Expedidor', type: 'text', size: 2, required: true },
           { key: 'rg_data_emissao', label: 'Data Emissão RG', type: 'date', size: 3 },
           { key: 'cnh_numero', label: 'CNH Número', type: 'text', size: 3 },
-          { key: 'cnh_categoria', label: 'CNH Categoria', type: 'select', size: 2,
+          {
+            key: 'cnh_categoria', label: 'CNH Categoria', type: 'select', size: 2,
             options: [
               { value: 'A', label: 'A' },
               { value: 'B', label: 'B' },
@@ -110,7 +120,8 @@ export class FuncionarioFormComponent {
         icon: '💼',
         fields: [
           { key: 'cargo', label: 'Cargo', type: 'text', size: 4, required: true },
-          { key: 'departamento', label: 'Departamento', type: 'select', size: 4,
+          {
+            key: 'departamento', label: 'Departamento', type: 'select', size: 4,
             options: [
               { value: 'ti', label: 'TI' },
               { value: 'rh', label: 'RH' },
@@ -120,7 +131,8 @@ export class FuncionarioFormComponent {
           },
           { key: 'data_admissao', label: 'Data Admissão', type: 'date', size: 3, required: true },
           { key: 'salario', label: 'Salário', type: 'number', size: 3 },
-          { key: 'tipo_contrato', label: 'Tipo Contrato', type: 'select', size: 3,
+          {
+            key: 'tipo_contrato', label: 'Tipo Contrato', type: 'select', size: 3,
             options: [
               { value: 'clt', label: 'CLT' },
               { value: 'pj', label: 'PJ' },
@@ -128,7 +140,8 @@ export class FuncionarioFormComponent {
               { value: 'temporario', label: 'Temporário' }
             ]
           },
-          { key: 'jornada', label: 'Jornada Trabalho', type: 'select', size: 3,
+          {
+            key: 'jornada', label: 'Jornada Trabalho', type: 'select', size: 3,
             options: [
               { value: '40h', label: '40h semanais' },
               { value: '44h', label: '44h semanais' },
@@ -153,6 +166,14 @@ export class FuncionarioFormComponent {
 
   // Método para ser chamado externamente (ex: de um dialog)
   submit() {
-    this.crudTabs?.submit();
+    const dadosPessoais = this.formPrincipal?.form?.getRawValue() || {};
+    const filhos = this.tabsFilhas?.allFormData || {};
+
+    const funcionarioCompleto = {
+      ...dadosPessoais,
+      ...filhos
+    };
+
+    this.save.emit(funcionarioCompleto);
   }
 }

@@ -17,7 +17,7 @@ export class FuncionarioDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<FuncionarioDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
   saveFromChild() {
     this.formComp?.submit();
@@ -37,51 +37,3 @@ export class FuncionarioDialogComponent {
 
 }
 
-// ============================================
-// EXEMPLO DE USO NO COMPONENTE PAI
-// ============================================
-
-/*
-import { MatDialog } from '@angular/material/dialog';
-import { FuncionarioDialogComponent } from './funcionario-dialog/funcionario-dialog.component';
-
-export class ListaFuncionariosComponent {
-  constructor(private dialog: MatDialog) {}
-
-  abrirCadastro() {
-    const dialogRef = this.dialog.open(FuncionarioDialogComponent, {
-      width: '90vw',
-      maxWidth: '1200px',
-      data: {
-        title: 'Novo Funcionário',
-        initial: {}
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Funcionário cadastrado:', result);
-        // Chamar serviço para salvar no backend
-      }
-    });
-  }
-
-  editarFuncionario(funcionario: any) {
-    const dialogRef = this.dialog.open(FuncionarioDialogComponent, {
-      width: '90vw',
-      maxWidth: '1200px',
-      data: {
-        title: 'Editar Funcionário',
-        initial: funcionario
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Funcionário atualizado:', result);
-        // Chamar serviço para atualizar no backend
-      }
-    });
-  }
-}
-*/

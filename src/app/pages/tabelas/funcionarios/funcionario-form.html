@@ -1,9 +1,11 @@
-<!-- funcionario-form.component.html -->
-<div class="funcionario-form">
-  <app-crud-tabs-form 
-    [config]="config"
-    [initialData]="initialData"
-    (save)="onSave($event)"
+<section class="funcionario-form">
+  <!-- Dados Pessoais -->
+  <app-crud-form #formPrincipal title="Dados Pessoais" [fields]="fields" [initialData]="initialData"
+    (save)="onSave($event)" (cancel)="onCancel()">
+  </app-crud-form>
+
+  <!-- Tabs Filhas -->
+  <app-crud-tabs-form #tabsFilhas [config]="tabsConfig" [initialData]="initialData" (save)="onSave($event)"
     (cancel)="onCancel()">
   </app-crud-tabs-form>
-</div>
+</section>
