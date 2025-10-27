@@ -43,6 +43,7 @@ export class CrudFormComponent implements OnChanges {
   @Input() fields: FormField[] = [];
   @Input() initialData: any = {};
   @Input() readOnly = false;
+  @Input() formWidth: string = '600px';
 
   @Output() save = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<void>();
@@ -59,7 +60,20 @@ export class CrudFormComponent implements OnChanges {
       this.buildForm();
     }
   }
+  onImageSelected(event: Event, field: any): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = e => {
+        field.preview = e.target?.result as string;
+        this.form.get(field.key)?.setValue(file);
+      };
+      reader.readAsDataURL(file);
+    }
 
+
+  }
   private buildForm() {
     const group: any = {};
     (this.fields || []).forEach((f) => {
@@ -122,7 +136,7 @@ export class CrudFormComponent implements OnChanges {
     // update FormControl value without emitting another input event
     try {
       this.form.get(f.key)?.setValue(v, { emitEvent: false });
-    } catch {}
+    } catch { }
   }
 
   getErrorMessage(f: FormField) {

@@ -13,7 +13,8 @@ export interface FormField {
   rows?: number;            // for textarea
   validators?: any[];       // extra validators (angular validators)
   errorMessage?: string;    // custom error message
-  placeholder?: string; 
+  placeholder?: string;
+  preview?: string; // 
 }
 export interface TabConfig {
   title: string;

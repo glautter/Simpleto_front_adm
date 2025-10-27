@@ -7,6 +7,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 /* GOV.BR core CSS is included via angular.json styles array */
 
 html,
@@ -17,7 +18,8 @@ body {
 body {
   margin: 0;
   font-family: Rawline, Roboto, 'Helvetica Neue', sans-serif;
-  --govbr-primary: #0057d9; /* gov.br primary blue */
+  --govbr-primary: #0057d9;
+  /* gov.br primary blue */
   --govbr-on-primary: #ffffff;
   --govbr-bg: #ffffff;
   --govbr-surface: #ffffff;
@@ -36,13 +38,16 @@ body {
 html {
   font-size: 16px;
 }
+
 body {
   font-size: 0.95rem;
 }
+
 h1 {
   font-size: 2rem;
   font-weight: 700;
 }
+
 h2 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -75,6 +80,7 @@ mat-toolbar.gb-header {
   background: var(--govbr-primary) !important;
   color: var(--govbr-on-primary) !important;
 }
+
 mat-card {
   margin: 0 !important;
   width: 100% !important;
@@ -87,4 +93,71 @@ mat-form-field {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* ======================================================
+   Ajuste global das bordas - Angular Material MDC
+   ====================================================== */
+
+/* Define o raio padrão das bordas do Material (para todos os componentes MDC) */
+html {
+  /* Campos de formulário (mat-form-field, inputs, selects) */
+  --mdc-shape-small: 4px;
+  --mdc-shape-medium: 8px;
+  --mdc-shape-large: 12px;
+
+  /* Ajuste opcional para componentes específicos */
+  --mdc-filled-text-field-container-shape: 6px;
+  --mdc-outlined-text-field-container-shape: 6px;
+  --mdc-button-container-shape: 6px;
+  --mdc-chip-shape: 8px;
+}
+
+/* ======================================================
+   Correções específicas de componentes (opcionais)
+   ====================================================== */
+
+/* mat-form-field */
+.mat-mdc-form-field {
+  border-radius: var(--mdc-shape-medium);
+}
+
+/* mat-card */
+.mat-mdc-card {
+  border-radius: var(--mdc-shape-large);
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* mat-button e mat-raised-button */
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button {
+  border-radius: var(--mdc-button-container-shape);
+}
+
+/* mat-dialog */
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: var(--mdc-shape-large);
+}
+
+/* mat-menu */
+.mat-mdc-menu-panel {
+  border-radius: var(--mdc-shape-medium);
+}
+
+/* mat-select */
+.mat-mdc-select-panel {
+  border-radius: var(--mdc-shape-medium);
+}
+
+/* ======================================================
+   Ajuste visual para inputs e botões no hover
+   ====================================================== */
+.mat-mdc-form-field:hover .mdc-text-field {
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.mat-mdc-raised-button:hover {
+  filter: brightness(0.97);
 }

@@ -1,11 +1,2 @@
-<div class="card">
-  <div class="card__body">
-    <app-paciente-form
-      #formComp
-      [title]="'Pacientes'"
-      [initialData]="data.initial"
-      [sexoOptions]="data.sexoOptions"
-      (save)="onSave($event)"
-    ></app-paciente-form>
-  </div>
-</div>
+<app-paciente-form #formComp [title]="'Pacientes'" [initialData]="data.initial" [sexoOptions]="data.sexoOptions"
+  (save)="onSave($event)"></app-paciente-form>

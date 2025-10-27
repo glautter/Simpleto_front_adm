@@ -1,11 +1,14 @@
+// pacientes.scss
 :host {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - 64px); /* ocupa toda a tela abaixo do header */
+  height: calc(100vh - 64px);
+  /* ocupa toda a tela abaixo do header */
   box-sizing: border-box;
   background-color: transparent;
-  padding: 1rem 1.5rem; /* mantém margem igual à do main */
+  padding: 1rem 1.5rem;
+  /* mantém margem igual à do main */
 }
 
 /* Container principal (card) */
@@ -14,7 +17,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%; /* ocupa todo o espaço do host */
+  height: 100%;
+  /* ocupa todo o espaço do host */
   margin: 0;
   padding: 0;
   border: none;
