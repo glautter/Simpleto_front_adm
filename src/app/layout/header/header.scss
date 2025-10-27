@@ -27,13 +27,21 @@ $amarelo: #c4b70e;
   }
 
   /* 🔹 Logo alinhada à esquerda */
-  .logo {
-    width: 160px;
-    height: 48px;
-    background: url('../../../assets/imgs/logo_vv.png') no-repeat left center;
-    background-size: contain;
-    flex-shrink: 0;
+/* 🔹 Logo alinhada à esquerda */
+.logo {
+  width: 160px;
+  height: 48px;
+  background: url('../../../assets/imgs/logo_vv.png') no-repeat left center;
+  background-size: contain;
+  flex-shrink: 0;
+  cursor: pointer; /* 👈 mostra que é clicável */
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.03); /* leve destaque visual */
   }
+}
+
 
   /* 🔹 Botão Hamburguer alinhado ao final do sidenav */
   .menu-toggle {
