@@ -52,12 +52,12 @@ export class SidenavComponent {
   }
 
   onHoverExpand(isHovering: boolean) {
-  if (this.collapsed) {
-    const sidenav = document.querySelector('.gb-sidenav') as HTMLElement;
-    if (!sidenav) return;
-    sidenav.style.width = isHovering ? '360px' : '80px';
+    if (this.collapsed) {
+      const sidenav = document.querySelector('.gb-sidenav') as HTMLElement;
+      if (!sidenav) return;
+      sidenav.style.width = isHovering ? '360px' : '80px';
+    }
   }
-}
 
   // ✅ NOVO: Toggle para subChildren
   toggleExpandChild(parentTitle: string, childTitle: string) {
@@ -139,13 +139,12 @@ export class SidenavComponent {
         {
           title: 'Plano de Contas',
           icon: 'list_alt',
-          //          route: '/config/plano-contas'
           route: '/administracao-home/pacientes'
         },
         {
           title: 'Taxas e Tarifas',
           icon: 'request_quote',
-          route: '/config/taxas'
+          route: '/administracao-home/funcionarios'
         },
         {
           title: 'Cadastro de Fornecedores',
