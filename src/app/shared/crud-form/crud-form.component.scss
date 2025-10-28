@@ -198,153 +198,6 @@ $border-color: #ddd;
   }
 }
 
-// === INPUTS CLEAN STYLE ===
-.mat-mdc-form-field {
-  width: 100%;
-  --mdc-outlined-text-field-container-shape: 10px;
-  --mdc-outlined-text-field-outline-color: #ccc;
-  --mdc-outlined-text-field-outline-width: 1px;
-  --mdc-outlined-text-field-hover-outline-color: #999;
-  --mdc-outlined-text-field-focus-outline-color: #007b83;
-  --mdc-outlined-text-field-label-text-color: #666;
-  --mdc-outlined-text-field-input-text-color: #222;
-  --mdc-outlined-text-field-hover-label-text-color: #444;
-
-  .mdc-text-field--outlined {
-    background: #fafafa;
-    transition: box-shadow 0.2s ease, background 0.2s ease;
-    box-shadow: inset 0 0 0 1px transparent;
-  }
-
-  .mdc-text-field--outlined:hover {
-    background: #fefefe;
-  }
-
-  .mdc-text-field--outlined.mdc-text-field--focused {
-    background: white;
-    box-shadow: 0 0 0 2px rgba(0, 123, 131, 0.25);
-  }
-
-  .mat-mdc-form-field-infix {
-    padding-top: 0.6rem;
-    padding-bottom: 0.4rem;
-  }
-
-  input.mat-mdc-input-element,
-  textarea.mat-mdc-input-element {
-    font-size: 0.95rem;
-    letter-spacing: 0.3px;
-  }
-
-  mat-label {
-    font-weight: 500;
-  }
-}
-
-// === SELECT e TEXTAREA
-.mat-mdc-select {
-  background: #fafafa;
-  border-radius: 10px;
-  transition: all 0.2s ease;
-}
-
-.mat-mdc-select:hover {
-  background: #fff;
-}
-
-.mat-mdc-select.mat-mdc-select-focused {
-  box-shadow: 0 0 0 2px rgba(0, 123, 131, 0.25);
-}
-
-.mat-mdc-textarea {
-  resize: vertical;
-}
-
-// === Checkbox / Radio
-.mat-mdc-checkbox,
-.mat-mdc-radio-button {
-  margin-top: 0.5rem;
-}
-
-// === Erro
-mat-error {
-  font-size: 0.8rem;
-  color: #d32f2f;
-  font-weight: 500;
-  margin-top: 0.25rem;
-}
-
-:host ::ng-deep .mat-mdc-form-field {
-  --mdc-outlined-text-field-container-shape: 10px;
-  --mdc-outlined-text-field-outline-width: 1px;
-  --mdc-outlined-text-field-outline-color: #ccc;
-  --mdc-outlined-text-field-hover-outline-color: #888;
-  --mdc-outlined-text-field-focus-outline-color: #007b83;
-  --mdc-outlined-text-field-container-color: #f9f9f9;
-
-  .mat-mdc-input-element {
-    padding: 0.7rem 1rem !important;
-    font-size: 0.95rem;
-    color: #222;
-  }
-
-  .mdc-text-field--outlined {
-    border-radius: 10px;
-    background-color: #fafafa;
-    transition: background-color 0.3s ease, box-shadow 0.2s ease;
-  }
-
-  .mdc-text-field--outlined:hover {
-    background-color: #fff;
-  }
-
-  .mdc-text-field--focused {
-    background-color: #fff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 131, 0.3);
-  }
-
-  mat-label {
-    color: #666;
-    font-weight: 500;
-  }
-}
-
-.mat-mdc-form-field .mat-mdc-input-element {
-  padding-left: 0.75rem !important;
-  padding-right: 0.75rem !important;
-}
-
-/* === AJUSTE DO CAMPO DATE === */
-:host ::ng-deep .mat-mdc-form-field {
-  .mat-mdc-form-field-flex {
-    align-items: center !important;
-  }
-
-  /* Ícones prefix e suffix alinhados verticalmente */
-  .mat-mdc-form-field-icon-prefix,
-  .mat-mdc-form-field-icon-suffix {
-    align-self: center !important;
-    margin-top: 0 !important;
-  }
-
-  /* Ícone do calendário à esquerda */
-  .mat-mdc-form-field-icon-prefix mat-icon {
-    font-size: 20px;
-    color: #666;
-    margin-right: 0.3rem;
-  }
-
-  /* Botão toggle à direita */
-  .mat-mdc-form-field-icon-suffix button.mat-mdc-icon-button {
-    color: #666;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: $primary;
-    }
-  }
-}
-
 /* === Mantém altura uniforme com outros campos === */
 :host ::ng-deep .mat-mdc-form-field-infix {
   padding-top: 0.4rem !important;
@@ -422,13 +275,12 @@ mat-error {
   textarea.mat-mdc-input-element,
   .mat-mdc-select {
     border: none !important;
-    background: transparent;
     box-shadow: none !important;
   }
 
   /* remove a estrutura da borda notch (aquela que esconde os cantos) */
   .mdc-notched-outline {
-    display: none !important;
+    display: flow-root !important;
   }
 
   /* ícones alinhados */

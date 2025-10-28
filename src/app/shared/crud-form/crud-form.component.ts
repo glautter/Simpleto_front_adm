@@ -39,7 +39,7 @@ import { A11yModule } from "@angular/cdk/a11y";
     A11yModule
   ],
   templateUrl: './crud-form.component.html',
-  styleUrls: ['./../base-css/base.component.scss', './crud-form.component.scss'],
+  styleUrls: ['./crud-form.component.scss'],
 })
 export class CrudFormComponent implements OnChanges {
   @Input() title: string = '';
