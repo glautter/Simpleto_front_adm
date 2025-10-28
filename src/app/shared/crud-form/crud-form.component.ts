@@ -16,7 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatIcon } from '@angular/material/icon';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { A11yModule } from "@angular/cdk/a11y";
 
 @Component({
@@ -35,8 +35,9 @@ import { A11yModule } from "@angular/cdk/a11y";
     MatRadioModule,
     MatTooltipModule,
     MatIcon,
+    MatIconModule,
     A11yModule
-],
+  ],
   templateUrl: './crud-form.component.html',
   styleUrls: ['./../base-css/base.component.scss', './crud-form.component.scss'],
 })
@@ -104,7 +105,7 @@ export class CrudFormComponent implements OnChanges {
   doClose() {
     this.close.emit();
   }
-  
+
   /** Return span 1..12 for grid layout based on field.size */
   getSpan(f: FormField): number {
     if (!f) return 12;

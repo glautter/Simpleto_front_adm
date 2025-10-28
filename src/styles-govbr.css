@@ -1,3 +1,0 @@
-@charset "UTF-8";
-@import "../node_modules/@govbr-ds/core/dist/core.css";
-/* wrapper to import gov.br core so that @charset is first in the processed file */

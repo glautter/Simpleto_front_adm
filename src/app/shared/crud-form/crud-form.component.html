@@ -35,7 +35,8 @@
 
               <!-- Data / DateTime -->
               <ng-container *ngSwitchCase="'date'">
-                <input matInput [matDatepicker]="picker" [formControlName]="f.key" />
+                <input matInput [matDatepicker]="picker" [formControlName]="f.key" (focus)="picker.open()"
+                  (click)="picker.open()" placeholder="dd/mm/aaaa" />
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </ng-container>

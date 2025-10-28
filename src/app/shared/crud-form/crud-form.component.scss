@@ -1,129 +1,440 @@
+@use "sass:color";
+
+// === Cores base (ajuste conforme o tema do app)
+$primary: #006b7f;
+$secondary: #008b9b;
+$light-bg: #fafafa;
+$border-color: #ddd;
+
+// === Layout base
 .base {
-  background: var(--surface, #fff);
-  border-radius: 12px;
-  max-width: 100%;
-  width: 100%;
-  max-height: 90vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-
-  /* Suaviza o visual dentro do modal */
-  animation: fadeIn 0.2s ease-in-out;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  margin: auto;
+  min-height: 44px !important;
+  padding: 1rem 1.5rem;
 
   &__header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.25rem;
-    background: var(--primary, #1976d2);
-    color: #fff;
+    justify-content: space-between;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+
 
     .base__title {
-      font-size: 1.2rem;
-      font-weight: 500;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: $primary;
+      letter-spacing: 0.3px;
     }
 
-    .btn.icon {
-      color: #fff;
-      opacity: 0.85;
-      transition: opacity 0.2s;
-      &:hover {
-        opacity: 1;
+    .base__controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .btn.icon {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #777;
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: $primary;
+          transform: scale(1.1);
+        }
+
+        mat-icon {
+          font-size: 22px;
+        }
       }
     }
   }
 
-  form.crud-form {
-    flex: 1;
-    overflow-y: auto;
-    padding: 1.5rem;
-    background: #fafafa;
+  // === Rodapé
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid $border-color;
 
-    .crud-form__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .base__actions {
+      display: flex;
       gap: 1rem;
-    }
 
-    .crud-form__field {
+      button {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        transition: background-color 0.2s ease;
+
+        mat-icon {
+          font-size: 18px;
+        }
+
+        &[color="primary"] {
+          background-color: $primary;
+          color: white;
+
+          &:hover {
+            background-color: color.scale($primary, $lightness: -8%);
+          }
+        }
+
+        &:not([color]) {
+          background-color: #f5f5f5;
+          color: #333;
+
+          &:hover {
+            background-color: #ebebeb;
+          }
+        }
+      }
+    }
+  }
+}
+
+// === Formulário
+.crud-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .mat-mdc-form-field {
       width: 100%;
-      min-width: 0; /* evita overflow interno */
-    }
-
-    mat-form-field.full-width {
-      width: 100%;
-    }
-
-    mat-error {
-      font-size: 0.8rem;
-      margin-top: 0.25rem;
     }
 
     .image-upload-container {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
-      .image-preview {
-        max-width: 140px;
-        border-radius: 6px;
-        border: 1px solid #ddd;
-      }
-    }
-
-    .base__footer {
-      display: flex;
-      justify-content: flex-end;
+      align-items: flex-start;
       gap: 0.75rem;
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid #e0e0e0;
-      background: #fafafa;
-      position: sticky;
-      bottom: 0;
-    }
 
-    button {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: 0.2s;
-    }
+      input[type="file"] {
+        border: 1px dashed $border-color;
+        border-radius: 6px;
+        padding: 0.75rem;
+        cursor: pointer;
+        background: $light-bg;
+        font-size: 0.9rem;
+        color: #555;
 
-    button:hover {
-      filter: brightness(1.1);
-    }
+        &:hover {
+          background: #f2f2f2;
+        }
+      }
 
-    button:active {
-      transform: scale(0.97);
-    }
-  }
-}
-
-/* Mobile responsivo */
-@media (max-width: 600px) {
-  .base {
-    max-width: 95vw;
-    max-height: 90vh;
-
-    form.crud-form {
-      padding: 1rem;
-      .crud-form__grid {
-        grid-template-columns: 1fr;
+      .image-preview {
+        width: 160px;
+        height: 160px;
+        border-radius: 8px;
+        object-fit: cover;
+        border: 1px solid $border-color;
       }
     }
   }
 }
 
-/* Animação suave ao abrir */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+// === Responsividade
+@media (max-width: 1024px) {
+  .crud-form__grid {
+    grid-template-columns: repeat(8, 1fr);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .crud-form__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .base__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .base__footer {
+    flex-direction: column;
+    align-items: stretch;
+
+    .base__actions {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .crud-form__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// === INPUTS CLEAN STYLE ===
+.mat-mdc-form-field {
+  width: 100%;
+  --mdc-outlined-text-field-container-shape: 10px;
+  --mdc-outlined-text-field-outline-color: #ccc;
+  --mdc-outlined-text-field-outline-width: 1px;
+  --mdc-outlined-text-field-hover-outline-color: #999;
+  --mdc-outlined-text-field-focus-outline-color: #007b83;
+  --mdc-outlined-text-field-label-text-color: #666;
+  --mdc-outlined-text-field-input-text-color: #222;
+  --mdc-outlined-text-field-hover-label-text-color: #444;
+
+  .mdc-text-field--outlined {
+    background: #fafafa;
+    transition: box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: inset 0 0 0 1px transparent;
+  }
+
+  .mdc-text-field--outlined:hover {
+    background: #fefefe;
+  }
+
+  .mdc-text-field--outlined.mdc-text-field--focused {
+    background: white;
+    box-shadow: 0 0 0 2px rgba(0, 123, 131, 0.25);
+  }
+
+  .mat-mdc-form-field-infix {
+    padding-top: 0.6rem;
+    padding-bottom: 0.4rem;
+  }
+
+  input.mat-mdc-input-element,
+  textarea.mat-mdc-input-element {
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+  }
+
+  mat-label {
+    font-weight: 500;
+  }
+}
+
+// === SELECT e TEXTAREA
+.mat-mdc-select {
+  background: #fafafa;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.mat-mdc-select:hover {
+  background: #fff;
+}
+
+.mat-mdc-select.mat-mdc-select-focused {
+  box-shadow: 0 0 0 2px rgba(0, 123, 131, 0.25);
+}
+
+.mat-mdc-textarea {
+  resize: vertical;
+}
+
+// === Checkbox / Radio
+.mat-mdc-checkbox,
+.mat-mdc-radio-button {
+  margin-top: 0.5rem;
+}
+
+// === Erro
+mat-error {
+  font-size: 0.8rem;
+  color: #d32f2f;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+:host ::ng-deep .mat-mdc-form-field {
+  --mdc-outlined-text-field-container-shape: 10px;
+  --mdc-outlined-text-field-outline-width: 1px;
+  --mdc-outlined-text-field-outline-color: #ccc;
+  --mdc-outlined-text-field-hover-outline-color: #888;
+  --mdc-outlined-text-field-focus-outline-color: #007b83;
+  --mdc-outlined-text-field-container-color: #f9f9f9;
+
+  .mat-mdc-input-element {
+    padding: 0.7rem 1rem !important;
+    font-size: 0.95rem;
+    color: #222;
+  }
+
+  .mdc-text-field--outlined {
+    border-radius: 10px;
+    background-color: #fafafa;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+  }
+
+  .mdc-text-field--outlined:hover {
+    background-color: #fff;
+  }
+
+  .mdc-text-field--focused {
+    background-color: #fff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 131, 0.3);
+  }
+
+  mat-label {
+    color: #666;
+    font-weight: 500;
+  }
+}
+
+.mat-mdc-form-field .mat-mdc-input-element {
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+/* === AJUSTE DO CAMPO DATE === */
+:host ::ng-deep .mat-mdc-form-field {
+  .mat-mdc-form-field-flex {
+    align-items: center !important;
+  }
+
+  /* Ícones prefix e suffix alinhados verticalmente */
+  .mat-mdc-form-field-icon-prefix,
+  .mat-mdc-form-field-icon-suffix {
+    align-self: center !important;
+    margin-top: 0 !important;
+  }
+
+  /* Ícone do calendário à esquerda */
+  .mat-mdc-form-field-icon-prefix mat-icon {
+    font-size: 20px;
+    color: #666;
+    margin-right: 0.3rem;
+  }
+
+  /* Botão toggle à direita */
+  .mat-mdc-form-field-icon-suffix button.mat-mdc-icon-button {
+    color: #666;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+/* === Mantém altura uniforme com outros campos === */
+:host ::ng-deep .mat-mdc-form-field-infix {
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+  display: flex;
+  align-items: center;
+}
+
+/* === CANTOS ARREDONDADOS EM TODOS OS CAMPOS === */
+:host ::ng-deep .mat-mdc-form-field {
+  /* controla o raio dos cantos */
+  --mdc-outlined-text-field-container-shape: 12px;
+
+  /* borda e fundo suaves */
+  .mdc-text-field--outlined {
+    border-radius: 12px !important;
+    background-color: #fafafa;
+    transition: background-color 0.25s ease, box-shadow 0.2s ease;
+  }
+
+  /* efeito hover e foco */
+  .mdc-text-field--outlined:hover {
+    background-color: #fff;
+  }
+
+  .mdc-text-field--focused {
+    background-color: #fff;
+    box-shadow: 0 0 0 2px rgba(0, 107, 127, 0.25);
+  }
+
+  /* select e textarea também */
+  .mat-mdc-select,
+  textarea.mat-mdc-input-element {
+    border-radius: 12px !important;
+  }
+
+  /* ícones internos com alinhamento */
+  .mat-mdc-form-field-icon-prefix mat-icon,
+  .mat-mdc-form-field-icon-suffix mat-icon {
+    color: #777;
+    font-size: 20px;
+  }
+}
+
+/* === CAMPOS COM CANTOS ARREDONDADOS E SEM BORDA PADRÃO === */
+:host ::ng-deep .mat-mdc-form-field {
+  --mdc-outlined-text-field-container-shape: 12px;
+  --mdc-outlined-text-field-outline-width: 0;
+  /* remove a borda padrão */
+  --mdc-outlined-text-field-outline-color: transparent;
+
+
+  .mdc-text-field--outlined {
+    border-radius: 12px !important;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 0 1px #ccc inset;
+    /* borda leve e opcional */
+    transition: background-color 0.25s ease, box-shadow 0.2s ease;
+  }
+
+  /* efeito hover */
+  .mdc-text-field--outlined:hover {
+    background-color: #fff;
+    box-shadow: 0 0 0 1px #999 inset;
+  }
+
+  /* foco com cor do tema */
+  .mdc-text-field--focused {
+    background-color: #fff;
+    box-shadow: 0 0 0 2px rgba(0, 107, 127, 0.4);
+  }
+
+  /* inputs, selects e textarea todos com mesmo visual */
+  input.mat-mdc-input-element,
+  textarea.mat-mdc-input-element,
+  .mat-mdc-select {
+    border: none !important;
+    background: transparent;
+    box-shadow: none !important;
+  }
+
+  /* remove a estrutura da borda notch (aquela que esconde os cantos) */
+  .mdc-notched-outline {
+    display: none !important;
+  }
+
+  /* ícones alinhados */
+  .mat-mdc-form-field-icon-prefix mat-icon,
+  .mat-mdc-form-field-icon-suffix mat-icon {
+    color: #777;
+    font-size: 20px;
   }
 }
