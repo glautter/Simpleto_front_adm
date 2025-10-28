@@ -17,6 +17,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIcon } from '@angular/material/icon';
+import { A11yModule } from "@angular/cdk/a11y";
 
 @Component({
   selector: 'app-crud-form',
@@ -34,7 +35,8 @@ import { MatIcon } from '@angular/material/icon';
     MatRadioModule,
     MatTooltipModule,
     MatIcon,
-  ],
+    A11yModule
+],
   templateUrl: './crud-form.component.html',
   styleUrls: ['./../base-css/base.component.scss'],
 })

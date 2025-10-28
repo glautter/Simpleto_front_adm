@@ -16,8 +16,10 @@
   <!-- Formulário -->
   <form [formGroup]="form" (ngSubmit)="submit()" class="crud-form">
     <div class="crud-form__grid">
-      <ng-container *ngFor="let f of fields; let i = index">
-        <div class="crud-form__field" *ngIf="f.visible !== false" [style.gridColumn]="'span ' + getSpan(f)">
+      @for (f of fields; track $index) {
+      <ng-container>
+        @if (f.visible !== false) {
+        <div class="crud-form__field" [style.gridColumn]="'span ' + getSpan(f)">
 
           <mat-form-field appearance="outline" floatLabel="auto" class="full-width">
             <mat-label>{{ f.label }}</mat-label>
@@ -40,7 +42,7 @@
 
               <!-- DateTime (data + hora) -->
               <ng-container *ngSwitchCase="'datetime'">
-                <input matInput type="datetime-local" [formControlName]="f.key" [id]="'datetime-' + i" />
+                <input matInput type="datetime-local" [formControlName]="f.key" [id]="'datetime-' + $index" />
               </ng-container>
 
 
@@ -65,17 +67,23 @@
             </ng-container>
 
             <!-- Mensagem de erro -->
-            <mat-error *ngIf="form.get(f.key)?.invalid && form.get(f.key)?.touched">
+            @if(form.get(f.key)?.invalid && form.get(f.key)?.touched) {
+            <mat-error>
               {{ getErrorMessage(f) }}
             </mat-error>
+            }
           </mat-form-field>
 
           <!-- Checkbox (fora do mat-form-field) -->
-          <mat-checkbox *ngIf="f.type === 'checkbox'" [formControlName]="f.key" class="full-width">
+          @if(f.type === 'checkbox') {
+          <mat-checkbox [formControlName]="f.key" class="full-width">
             {{ f.label }}
           </mat-checkbox>
+          }
         </div>
+        }
       </ng-container>
+      }
     </div>
 
     <!-- Footer com botões -->
