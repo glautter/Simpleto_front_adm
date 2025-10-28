@@ -66,12 +66,12 @@ export class PacienteFormComponent implements OnChanges {
   private buildFields() {
     // all fields have size = 6 as requested
     this.fields = [
-      { key: 'matricula', label: 'Matrícula', type: 'text', size: 3, required: true },
-      { key: 'cpf', label: 'CPF', type: 'text', size: 3, required: true, mask: 'cpf' },
-      { key: 'nome', label: 'Nome', type: 'text', size: 6, required: true },
+      { key: 'matricula', label: 'Matrícula', type: 'text', size: 1, required: true },
+      { key: 'cpf', label: 'CPF', type: 'text', size: 1, required: true, mask: 'cpf' },
       { key: 'cns', label: 'CNS', type: 'text', size: 2 },
+      { key: 'nome', label: 'Nome', type: 'text', size: 6, required: true },
       { key: 'sexo', label: 'Sexo', type: 'select', size: 2, options: this.sexoOptions || [] },
-      { key: 'nascimento', label: 'Nascimento', type: 'date', size: 3 },
+      { key: 'nascimento', label: 'Nascimento', type: 'date', size: 2 },
       { key: 'raca', label: 'Raça/Cor', type: 'select', size: 2, options: this.racaOptions || [] },
       { key: 'etnia', label: 'Etnia', type: 'select', size: 3, options: [] },
       { key: 'nacionalidade', label: 'Nacionalidade', type: 'select', size: 4, options: [] },

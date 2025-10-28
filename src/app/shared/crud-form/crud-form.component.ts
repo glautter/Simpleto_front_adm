@@ -38,7 +38,7 @@ import { A11yModule } from "@angular/cdk/a11y";
     A11yModule
 ],
   templateUrl: './crud-form.component.html',
-  styleUrls: ['./../base-css/base.component.scss'],
+  styleUrls: ['./../base-css/base.component.scss', './crud-form.component.scss'],
 })
 export class CrudFormComponent implements OnChanges {
   @Input() title: string = '';
@@ -104,6 +104,7 @@ export class CrudFormComponent implements OnChanges {
   doClose() {
     this.close.emit();
   }
+  
   /** Return span 1..12 for grid layout based on field.size */
   getSpan(f: FormField): number {
     if (!f) return 12;

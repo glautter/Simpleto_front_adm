@@ -11,7 +11,7 @@ import { FormField } from '../models/form-field/form-field.model';
   standalone: true,
   imports: [CommonModule, CrudFormComponent, ReactiveFormsModule],
   templateUrl: './crud-tabs-form.component.html',
-  styleUrls: ['./../base-css/base.component.scss']
+  styleUrls: ['./../base-css/base.component.scss', './crud-tabs-form.component.scss']
 })
 export class CrudTabsFormComponent implements OnChanges {
   @Input() config: CrudTabsConfig = { tabs: [] };

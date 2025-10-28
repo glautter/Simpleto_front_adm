@@ -10,32 +10,3 @@
   padding: 1rem 1.5rem;
   /* mantém margem igual à do main */
 }
-
-/* Container principal (card) */
-.card {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  /* ocupa todo o espaço do host */
-  margin: 0;
-  padding: 0;
-  border: none;
-  box-shadow: none;
-  background: transparent;
-  box-sizing: border-box;
-
-  .card__body {
-    flex: 1;
-    background: #fff;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-  }
-}

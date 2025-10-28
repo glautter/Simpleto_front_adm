@@ -34,11 +34,11 @@
               <input *ngSwitchCase="'number'" matInput type="number" [formControlName]="f.key" />
 
               <!-- Data / DateTime -->
-              <div *ngSwitchCase="'date'">
+              <ng-container *ngSwitchCase="'date'">
+                <input matInput [matDatepicker]="picker" [formControlName]="f.key" />
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-                <input *ngSwitchCase="'date'" matInput [matDatepicker]="picker" [formControlName]="f.key" />
-                <mat-datepicker-toggle *ngSwitchCase="'date'" matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              </div>
+              </ng-container>
 
               <!-- DateTime (data + hora) -->
               <ng-container *ngSwitchCase="'datetime'">

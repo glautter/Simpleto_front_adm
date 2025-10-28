@@ -1,0 +1,85 @@
+@use 'sass:color';
+
+// Variáveis para manter consistência
+$azul: #01586d;
+$azul-claro: #00ffea;
+$azul-hover: rgba(1, 88, 109, 0.05);
+
+/* ====== TABS (NAVIGAÇÃO ENTRE ABAS DO FORMULÁRIO) ====== */
+.crud-tabs__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-bottom: 2px solid #e2e8f0;
+  background-color: #f8fafc;
+  padding: 0.5rem 1rem;
+  border-radius: 8px 8px 0 0;
+}
+
+.crud-tabs__tab {
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover {
+    background-color: $azul-hover;
+    color: $azul;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.crud-tabs__tab--active {
+  background-color: #fff;
+  color: $azul;
+  font-weight: 600;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+  border-bottom: 2px solid $azul;
+}
+
+.crud-tabs__tab--active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: $azul;
+  border-radius: 2px;
+}
+
+/* Ícone da aba */
+.crud-tabs__icon {
+  font-size: 18px;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .crud-tabs__nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  .crud-tabs__tab {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+}
