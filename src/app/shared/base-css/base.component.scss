@@ -1,4 +1,5 @@
 // base.component.scss
+@use 'sass:color';
 
 // Variáveis para manter consistência
 $azul: #01586d;
@@ -7,11 +8,11 @@ $azul-hover: rgba(1, 88, 109, 0.05);
 
 // Função auxiliar para clarear cores
 @function lighten-color($color, $percent) {
-  @return mix(white, $color, $percent);
+  @return color.mix(white, $color, $percent);
 }
 
 @function darken-color($color, $percent) {
-  @return mix(black, $color, $percent);
+  @return color.mix(black, $color, $percent);
 }
 
 /* ====== CONTAINER PRINCIPAL ====== */
