@@ -19,7 +19,7 @@
       @for (f of fields; track $index) {
       <ng-container>
         @if (f.visible !== false) {
-        <div class="crud-form__field" [style.gridColumn]="'span ' + getSpan(f)">
+        <div class="crud-form__field" hidden [style.gridColumn]="'span ' + getSpan(f)">
 
           <mat-form-field appearance="outline" floatLabel="auto" class="full-width">
             <mat-label>{{ f.label }}</mat-label>
