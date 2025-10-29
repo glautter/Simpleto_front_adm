@@ -178,3 +178,18 @@ $border-color: #ddd;
   margin-top: 0.9rem !important;
   background-color: white !important;
 }
+/* Posiciona o ícone corretamente */
+::ng-deep .crud-form__field .mat-mdc-form-field-icon-suffix {
+  position: absolute !important;
+  right: 8px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+::ng-deep .crud-form__field .mat-mdc-form-field-infix {
+  padding-right: 0px !important;
+}
+::ng-deep .mat-datepicker-content .mat-calendar {
+  width: 360px !important;
+  height: 360px !important;
+}
