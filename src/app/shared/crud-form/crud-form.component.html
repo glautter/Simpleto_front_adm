@@ -86,19 +86,18 @@
       </ng-container>
       }
     </div>
-
-    <!-- Footer com botões -->
-    <footer class="base__footer">
-      <div class="base__actions">
-        <button type="button" mat-button (click)="doCancel()">
-          <mat-icon>close</mat-icon>
-          Cancelar
-        </button>
-        <button type="submit" mat-raised-button color="primary" [disabled]="readOnly">
-          <mat-icon>save</mat-icon>
-          Salvar
-        </button>
-      </div>
-    </footer>
   </form>
+  <!-- Footer com botões -->
+  <footer class="base__footer">
+    <div class="base__actions">
+      <button type="button" mat-button (click)="doCancel()">
+        <mat-icon>close</mat-icon>
+        Cancelar
+      </button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="readOnly">
+        <mat-icon>save</mat-icon>
+        Salvar
+      </button>
+    </div>
+  </footer>
 </section>
