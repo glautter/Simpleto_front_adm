@@ -19,3 +19,20 @@ body {
   font: var(--mat-sys-body-medium);
   margin: 0;
 }
+
+/* styles.scss ou layout.scss */
+.page-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 64px);
+  box-sizing: border-box;
+  background-color: transparent;
+  padding: 1rem 1.5rem;
+}
+
+.page-main .list-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
