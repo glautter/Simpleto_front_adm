@@ -75,16 +75,16 @@ export class PacienteFormComponent implements OnChanges {
       { key: 'raca', label: 'Raça/Cor', type: 'select', size: 3, options: this.racaOptions || [] },
       { key: 'etnia', label: 'Etnia', type: 'select', size: 3, options: [] },
       { key: 'nacionalidade', label: 'Nacionalidade', type: 'select', size: 4, options: [] },
-      { key: 'municipio', label: 'Município', type: 'text', size: 4 },
+      { key: 'municipio', label: 'Município', type: 'text', size: 5 },
       { key: 'cep', label: 'CEP', type: 'text', size: 2, mask: 'cep' },
       { key: 'tipo_logradouro', label: 'Tipo Lograd.', type: 'select', size: 2, options: [] },
       { key: 'endereco', label: 'Endereço', type: 'text', size: 6 },
       { key: 'numero', label: 'Número', type: 'text', size: 2 },
-      { key: 'complemento', label: 'Complemento', type: 'text', size: 4 },
-      { key: 'bairro', label: 'Bairro', type: 'text', size: 4 },
-      { key: 'ddd', label: 'DDD', type: 'text', size: 2 },
-      { key: 'telefone', label: 'Telefone', type: 'text', size: 6, mask: 'phone' },
-      { key: 'email', label: 'E-mail', type: 'text', size: 6 },
+      { key: 'complemento', label: 'Complemento', type: 'text', size: 2 },
+      { key: 'bairro', label: 'Bairro', type: 'text', size: 5 },
+      { key: 'ddd', label: 'DDD', type: 'text', size: 1 },
+      { key: 'telefone', label: 'Telefone', type: 'text', size: 4, mask: 'phone' },
+      { key: 'email', label: 'E-mail', type: 'text', size: 12 },
     ];
   }
 
