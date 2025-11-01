@@ -119,10 +119,6 @@ $border-color: #ddd;
   align-items: center;
 }
 
-.cdk-overlay-container {
-  z-index: 9999 !important;
-}
-
 .crud-form__grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);

@@ -12,12 +12,48 @@ import { MatSelectModule } from '@angular/material/select';
 import {
   MatDatepickerModule
 } from '@angular/material/datepicker';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule, NativeDateAdapter } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { A11yModule } from "@angular/cdk/a11y";
+
+// Formato brasileiro de data
+export const BR_DATE_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'DD/MM/YYYY',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
+
+export class BrazilianDateAdapter extends NativeDateAdapter {
+  override parse(value: any): Date | null {
+    if (typeof value === 'string') {
+      const parts = value.split('/');
+      if (parts.length === 3) {
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        return new Date(year, month, day);
+      }
+    }
+    return null;
+  }
+
+  override format(date: Date, displayFormat: Object): string {
+    if (!date) return '';
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+}
 
 @Component({
   selector: 'app-crud-form',
@@ -37,11 +73,14 @@ import { A11yModule } from "@angular/cdk/a11y";
     MatTooltipModule,
     MatIcon,
     MatIconModule,
-    A11yModule
+    A11yModule,
   ],
   templateUrl: './crud-form.component.html',
   styleUrls: ['./crud-form.component.scss'],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }]
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: MAT_DATE_FORMATS, useValue: BR_DATE_FORMATS },
+    { provide: DateAdapter, useClass: BrazilianDateAdapter }]
 })
 export class CrudFormComponent implements OnChanges {
   @Input() title: string = '';
