@@ -20,21 +20,3 @@ body {
   margin: 0;
 
 }
-
-/* === Corrige fundo branco em todos os mat-form-field e mat-select (Material 3) === */
-.mdc-text-field--filled,
-.mat-mdc-form-field-appearance-fill .mat-mdc-text-field-wrapper,
-.mat-mdc-select-trigger,
-.mat-mdc-select-value,
-.mat-mdc-select-value-text {
-  background-color: transparent !important;
-}
-
-/* Garante que a var global também seja transparente */
-:root {
-  --mat-sys-surface-container-highest: transparent !important;
-  --mdc-filled-text-field-container-color: transparent !important;
-  --mdc-filled-text-field-hover-container-color: transparent !important;
-  --mdc-filled-text-field-focus-container-color: transparent !important;
-  --mdc-filled-text-field-disabled-container-color: transparent !important;
-}
