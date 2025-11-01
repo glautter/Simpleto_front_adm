@@ -1,51 +1,32 @@
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
 html {
-  font-size: 16px;
+  @include mat.theme((color: (primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
 }
 
-html,
 body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
   margin: 0;
-  font-size: 0.95rem;
-  font-family: Rawline, Roboto, 'Helvetica Neue', sans-serif;
-  --govbr-primary: #0057d9;
-  /* gov.br primary blue */
-  --govbr-on-primary: #ffffff;
-  --govbr-bg: #ffffff;
-  --govbr-surface: #ffffff;
-  --govbr-surface-variant: #f6f7fb;
-  color: #111827;
-}
-
-/* interactive token and spacing helpers used across components */
-:root {
-  --interactive: #1351b4;
-  --spacing-scale-half: 4px;
-  --focus-offset: var(--spacing-scale-half);
-}
-
-/* smoother transitions */
-* {
-  transition: background-color 160ms ease, color 160ms ease;
-}
-
-/* Sidenav collapsed base */
-.sidenav.collapsed {
-  width: 64px;
-}
-
-/* utility hover for sidenav/button */
-.gb-sidenav__button:hover,
-.gb-sidenav__submenu-link:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
-
-.gb-sidenav__button:focus,
-.gb-sidenav__submenu-link:focus {
-  outline: 2px solid rgba(0, 87, 217, 0.12);
-  outline-offset: 2px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
 }

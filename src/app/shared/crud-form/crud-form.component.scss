@@ -119,6 +119,10 @@ $border-color: #ddd;
   align-items: center;
 }
 
+.cdk-overlay-container {
+  z-index: 9999 !important;
+}
+
 .crud-form__grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -162,19 +166,4 @@ $border-color: #ddd;
       justify-content: space-between;
     }
   }
-}
-
-@media (max-width: 480px) {
-  .crud-form__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-:host ::ng-deep .mat-mdc-input-element {
-  margin-top: 0.9rem !important;
-}
-
-:host ::ng-deep .mat-mdc-select {
-  margin-top: 0.9rem !important;
-  background-color: white !important;
 }

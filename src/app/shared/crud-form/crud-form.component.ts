@@ -1,18 +1,18 @@
 // --crud-form-component
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges, inject, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { FormField } from '../models/form-field/form-field.model';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormField } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+
 import {
-  MatDatepickerControl,
-  MatDatepickerModule,
-  MatDatepickerPanel,
+  MatDatepickerModule
 } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -27,6 +27,7 @@ import { A11yModule } from "@angular/cdk/a11y";
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
+    MatFormField,
     MatButtonModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -40,6 +41,7 @@ import { A11yModule } from "@angular/cdk/a11y";
   ],
   templateUrl: './crud-form.component.html',
   styleUrls: ['./crud-form.component.scss'],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }]
 })
 export class CrudFormComponent implements OnChanges {
   @Input() title: string = '';
@@ -51,6 +53,9 @@ export class CrudFormComponent implements OnChanges {
   @Output() save = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<void>();
   @Output() close = new EventEmitter<void>();
+
+  platformId = inject(PLATFORM_ID);
+  isBrowser = isPlatformBrowser(this.platformId);
 
   form: FormGroup;
 
