@@ -17,7 +17,7 @@ $primary: #006b7b;
   background: rgba($azul, 0.1);
   backdrop-filter: blur(8px);
   border-bottom: 3px solid color.mix($azul, white, 40%);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(6, 152, 209, 0.05);
   border-radius: 0 0 12px 12px;
 }
 
@@ -62,7 +62,6 @@ $primary: #006b7b;
   }
 }
 
-
 /* ====== CONTROLES (Ações + Busca) ====== */
 .base__controls {
   display: flex;
@@ -75,7 +74,7 @@ $primary: #006b7b;
   border-radius: 8px;
   border: 1px solid #cbd5e1;
   font-size: 0.938rem;
-  color: #334155;
+  color: #012727;
   min-width: 220px;
   transition: all 0.2s ease;
   background: white;
