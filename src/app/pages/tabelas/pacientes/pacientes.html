@@ -1,11 +1,6 @@
 <div class="page-main">
   <div class="list-area">
-    <app-list-base
-      [title]="'Pacientes'"
-      [columns]="columns"
-      [data]="data"
-      (add)="onAdd()"
-      (edit)="onEdit($event)"
+    <app-list-base [title]="'PACIENTES'" [columns]="columns" [data]="data" (add)="onAdd()" (edit)="onEdit($event)"
       (delete)="onDelete($event)">
     </app-list-base>
   </div>
