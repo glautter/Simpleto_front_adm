@@ -53,9 +53,11 @@
 
               <!-- Select -->
               <mat-select *ngSwitchCase="'select'" [formControlName]="f.key">
-                <mat-option *ngFor="let o of f.options" [value]="o.value">
+                @for (o of f.options; track o.value) {
+                <mat-option [value]="o.value">
                   {{ o.label }}
                 </mat-option>
+                }
               </mat-select>
 
               <!-- Textarea -->

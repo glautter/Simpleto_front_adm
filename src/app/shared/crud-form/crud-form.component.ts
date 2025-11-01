@@ -1,7 +1,7 @@
 // --crud-form-component
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges, inject, PLATFORM_ID } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators, FormGroup, FormsModule } from '@angular/forms';
 import { FormField } from '../models/form-field/form-field.model';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -74,6 +74,7 @@ export class BrazilianDateAdapter extends NativeDateAdapter {
     MatIcon,
     MatIconModule,
     A11yModule,
+    FormsModule
   ],
   templateUrl: './crud-form.component.html',
   styleUrls: ['./crud-form.component.scss'],
